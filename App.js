@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 import {
   SafeAreaView,
   StyleSheet,
@@ -24,7 +25,15 @@ const App: () => React$Node = () => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
-          <Text>This is IIITVOC App</Text>
+          <Text>
+            This is IIITVOC App
+          </Text>
+          <GoogleSigninButton
+            style={{ width: 192, height: 48 }}
+            size={GoogleSigninButton.Size.Wide}
+            color={GoogleSigninButton.Color.Dark}
+            onPress={this._signIn}
+            disabled={false} />
         </ScrollView>
       </SafeAreaView>
     </>
