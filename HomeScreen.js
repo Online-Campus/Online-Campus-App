@@ -8,6 +8,8 @@ import {
     Text,
     StatusBar,
 } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+// import console = require('console');
 // import console = require('console');
 
 
@@ -34,6 +36,23 @@ class HomeScreen extends React.Component {
         }
     }
 
+    addComplaint(){
+        // console.log(this.state)
+        let newComplaints = this.state.complaints
+        newComplaints = [
+            ...newComplaints,
+            {
+                'id': newComplaints.length + 1,
+                'title': 'New Complaint',
+                'author': '',
+                'content': ''
+            } 
+        ]
+        this.setState({
+            complaints: newComplaints
+        })
+    }
+
     render() {
         // console.log(this.state)
 
@@ -46,15 +65,23 @@ class HomeScreen extends React.Component {
                         key={c.id}
 
                     >
-                        
                     </Button>
                 )
-            
         )
         return (
             
             <View style={styles.container}>
                 { xy }
+                <View
+                    style={styles.circleButton}
+                >
+                    <TouchableOpacity 
+                        
+                        onPress={this.addComplaint.bind(this)} 
+                    >
+                        <Text>Circle Button</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }
@@ -70,7 +97,17 @@ const styles = StyleSheet.create({
         backgroundColor: 'blue',
         marginTop: 150,
         marginLeft: 100,
-    }
+    },
+    circleButton:{
+        padding: 5,
+        height: 50,
+        width: 50,  
+        borderRadius:400, 
+        right:60,
+        bottom: 80,
+        position: "absolute",
+        backgroundColor:'#1CB9F0',
+      }
 });
 
 export default HomeScreen;
