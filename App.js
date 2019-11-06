@@ -7,78 +7,31 @@
  */
 
 import React from 'react';
-import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
+// import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
+  Button,
   Text,
   StatusBar,
 } from 'react-native';
+import HomeScreen from './HomeScreen';
+import Complaint from './Complaint';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="light-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Text>
-            This is IIITVOC App
-          </Text>
-          <GoogleSigninButton
-            style={{ width: 192, height: 48 }}
-            size={GoogleSigninButton.Size.Wide}
-            color={GoogleSigninButton.Color.Dark}
-            onPress={this._signIn}
-            disabled={false} />
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
-
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: 'white',
-    color: 'green',
-    fontWeight: '700'
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: 'white',
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: 'green',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: 'green',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: 'green',
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
+const MainNavigator = createStackNavigator({
+  Complaint: {screen: Complaint},
+  Home: { screen: HomeScreen },
 });
+
+const App = createAppContainer(MainNavigator);
+
+// export default createStackNavigator({
+//   Home: { screen: HomeScreen },
+//   Complaint: {screen: Complaint},
+// });;
 
 export default App;
