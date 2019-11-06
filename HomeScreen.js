@@ -56,7 +56,7 @@ class HomeScreen extends React.Component {
     render() {
         // console.log(this.state)
 
-        xy = this.state.complaints.map(
+        complaints = this.state.complaints.map(
             c => (
                     <Button 
                         onPress={() => this.props.navigation.navigate('Complaint')} 
@@ -71,7 +71,7 @@ class HomeScreen extends React.Component {
         return (
             
             <View style={styles.container}>
-                { xy }
+                { complaints }
                 <View
                     style={styles.circleButton}
                 >
