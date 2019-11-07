@@ -39,31 +39,39 @@ class HomeScreen extends React.Component {
     addComplaint(){
         // console.log(this.state)
         let newComplaints = this.state.complaints
+        const newComplaint = {
+            'id': newComplaints.length + 1,
+            'title': 'New Complaint',
+            'author': '',
+            'content': ''
+        } 
         newComplaints = [
             ...newComplaints,
-            {
-                'id': newComplaints.length + 1,
-                'title': 'New Complaint',
-                'author': '',
-                'content': ''
-            } 
+            newComplaint
         ]
         this.setState({
             complaints: newComplaints
         })
+
+        this.props.navigation.navigate('editCView', newComplaint)
     }
 
     render() {
         // console.log(this.state)
-
         complaints = this.state.complaints.map(
             c => (
                     <Button 
-                        onPress={() => this.props.navigation.navigate('Complaint')} 
+                        onPress={() => this.props.navigation.navigate('editCView',
+                            {
+                                'id': c.id,
+                                'title': c.title,
+                                'author': c.author,
+                                'content': c.content
+                            }
+                        )} 
                         title={c.title} 
                         style={styles.button} 
                         key={c.id}
-
                     >
                     </Button>
                 )
@@ -76,10 +84,11 @@ class HomeScreen extends React.Component {
                     style={styles.circleButton}
                 >
                     <TouchableOpacity 
-                        
                         onPress={this.addComplaint.bind(this)} 
                     >
-                        <Text>Circle Button</Text>
+                        <Text>
+                            new Complaint
+                        </Text>
                     </TouchableOpacity>
                 </View>
             </View>
