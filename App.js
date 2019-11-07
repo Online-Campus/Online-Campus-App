@@ -17,14 +17,16 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-import HomeScreen from './HomeScreen';
-import Complaint from './Complaint';
+import HomeScreen from './HomeScreen'
+import Complaint from './Complaint'
+import editCView from './editCView'
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 const MainNavigator = createStackNavigator({
   Complaint: {screen: Complaint},
   Home: { screen: HomeScreen },
+  editCView: { screen: editCView }
 });
 
 const App = createAppContainer(MainNavigator);

@@ -8,15 +8,19 @@ import {
     Text,
     StatusBar,
 } from 'react-native';
+// import console = require('console');
 
-class Complaint extends React.Component {
+class editCView extends React.Component {
     // const {navigate} = this.props.navigation;
+    constructor(){
+        super()
+    }
+    
     render() {
         return (
             <View style={styles.container}>
-                <Button onPress={() => this.props.navigation.navigate('Home')} title="HomeScreens" style={styles.button}>
-
-                </Button>
+                <Text>{ this.props.navigation.getParam('title', 'title') }</Text>
+                <Text>{ this.props.navigation.getParam('content', 'content') }</Text>
             </View>
         );
     }
@@ -35,5 +39,5 @@ const styles = StyleSheet.create({
     }
 });
 
-export default (Complaint);
+export default (editCView);
 
