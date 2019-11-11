@@ -20,24 +20,27 @@ class HomeScreen extends React.Component {
         super();
         this.state = { 
             complaints: [
-                {
-                    'id': 1,
-                    'author': 'Neeraj',
-                    'title': 'Title 1',
-                    'content': 'Khana shuddh nahi milta'
-                },
-                {
-                    'id': 2,
-                    'title': 'title 2',
-                    'author': 'Jon esnow',
-                    'content': 'XUIsdf'
-                }
+
             ]
         }
     }
 
+    fetchComplaints(){
+        fetch('http://127.0.0.1:8000/complaints/')
+            .then( (response) => response.json() )
+            .then( response => {
+                this.setState({
+                    complaints: response
+                })
+            } )
+    }
+
+    componentDidMount(){
+        this.fetchComplaints();
+    }
+
     addComplaint(){
-        // console.log(this.state)
+        console.log(this.state)
         let newComplaints = this.state.complaints
         const newComplaint = {
             'id': newComplaints.length + 1,
@@ -65,7 +68,6 @@ class HomeScreen extends React.Component {
                             {
                                 'id': c.id,
                                 'title': c.title,
-                                'author': c.author,
                                 'content': c.content
                             }
                         )} 
