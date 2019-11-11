@@ -11,7 +11,9 @@ import {
 
 class Complaint extends React.Component {
     // const {navigate} = this.props.navigation;
+
     render() {
+        // console.log('complaints', this.state.complaints)
         return (
             <View style={styles.container}>
                 <Button onPress={() => this.props.navigation.navigate('Home')} title="HomeScreens" style={styles.button}>
