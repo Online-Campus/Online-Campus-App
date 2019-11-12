@@ -9,6 +9,8 @@ import {
     StatusBar,
 } from 'react-native';
 
+import Login from './components/login/Login'
+
 class Complaint extends React.Component {
     // const {navigate} = this.props.navigation;
 
@@ -19,14 +21,17 @@ class Complaint extends React.Component {
                 <Button onPress={() => this.props.navigation.navigate('Home')} title="HomeScreens" style={styles.button}>
 
                 </Button>
+               
             </View>
+
+            
         );
     }
 };
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
     },
     button: {
         width: 200,
