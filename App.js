@@ -26,7 +26,8 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 const MainNavigator = createStackNavigator({
-  Login: {screen: Login},
+  // SignUp: { screen: SignUp},
+  // Login: { screen: Login},
   Complaint: {screen: Complaint},
   Home: { screen: HomeScreen },
   Create_complaint: {screen: Create_complaint},
