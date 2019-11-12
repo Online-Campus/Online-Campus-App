@@ -21,10 +21,7 @@ class Complaint extends React.Component {
                 <Button onPress={() => this.props.navigation.navigate('Home')} title="HomeScreens" style={styles.button}>
 
                 </Button>
-               
             </View>
-
-            
         );
     }
 };

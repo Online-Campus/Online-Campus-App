@@ -17,10 +17,17 @@ class Login extends React.Component {
     render() {
         return (
             <View KeyboardAvoidingView behaviour="padding" style={styles.container}>
+                <StatusBar
+                    barStyle="light-content"
+                />
                 <TextInput 
                     style = {styles.input}
                     placeholder="email"
                     returnKeyType="next"
+                    onSubmitEditing={() => this.passwordInput.focus()}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                    autoCorrect={false}
                     placeholderTextColor='rgba(255,255,255,0.7)'
                 />
                 <TextInput 
@@ -29,6 +36,7 @@ class Login extends React.Component {
                     secureTextEntry
                     returnKeyType="go"
                     placeholderTextColor='rgba(255,255,255,0.7)'
+                    ref = {(input) => this.passwordInput=input}
                 />
                 <TouchableOpacity
                     style={styles.buttonContainer}
