@@ -20,10 +20,12 @@ import {
 import HomeScreen from './HomeScreen'
 import Complaint from './Complaint'
 import editCView from './editCView'
+import Login from './components/login/Login'
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 const MainNavigator = createStackNavigator({
+  Login: {screen: Login},
   Complaint: {screen: Complaint},
   Home: { screen: HomeScreen },
   editCView: { screen: editCView }
