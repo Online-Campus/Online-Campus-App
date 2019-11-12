@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-class Login extends React.Component {
+class SignUp extends React.Component {
 
     render() {
         return (
@@ -98,5 +98,5 @@ const styles = StyleSheet.create({
     }
 });
 
-export default (Login);
+export default SignUp;
 
