@@ -36,7 +36,7 @@ class HomeScreen extends React.Component {
     }
 
     componentDidMount(){
-        this.fetchComplaints();
+        // this.fetchComplaints();
     }
 
     addComplaint(){
