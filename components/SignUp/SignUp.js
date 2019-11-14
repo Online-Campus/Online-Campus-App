@@ -13,6 +13,21 @@ import {
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class SignUp extends React.Component {
+    state = {
+        email: '', password: '', re_password: '', first_name: '', last_name: ''
+    }
+    onChangeText = (key, val) => {
+        this.setState({ [key]: val })
+    }
+    signUp = async () => {
+        const { email, first_name, last_name, password } = this.state
+        try {
+          console.log('SignUp ho gya')
+        } catch (err) {
+          console.log('Error aa gaya')
+        }
+    }
+
 
     render() {
         return (
@@ -27,6 +42,7 @@ class SignUp extends React.Component {
                     autoCapitalize="none"
                     autoCorrect={false}
                     placeholderTextColor='rgba(255,255,255,0.7)'
+                    onChangeText={val => this.onChangeText('email', val)}
                 />
                 <TextInput 
                     style = {styles.input}
@@ -34,6 +50,7 @@ class SignUp extends React.Component {
                     returnKeyType="next"
                     autoCorrect={false}
                     placeholderTextColor='rgba(255,255,255,0.7)'
+                    onChangeText={val => this.onChangeText('first_name', val)}
                 />
                  <TextInput 
                     style = {styles.input}
@@ -41,6 +58,7 @@ class SignUp extends React.Component {
                     returnKeyType="next"
                     autoCorrect={false}
                     placeholderTextColor='rgba(255,255,255,0.7)'
+                    onChangeText={val => this.onChangeText('last_name', val)}
                 />
                 <TextInput 
                     style = {styles.input}
@@ -48,6 +66,7 @@ class SignUp extends React.Component {
                     secureTextEntry
                     returnKeyType="next"
                     placeholderTextColor='rgba(255,255,255,0.7)'
+                    onChangeText={val => this.onChangeText('password', val)}
                     ref = {(input) => this.passwordInput=input}
                 />
                 <TextInput 
@@ -56,10 +75,12 @@ class SignUp extends React.Component {
                     secureTextEntry
                     returnKeyType="go"
                     placeholderTextColor='rgba(255,255,255,0.7)'
+                    onChangeText={val => this.onChangeText('re_password', val)}
                     ref = {(input) => this.passwordInput=input}
                 />
                 <TouchableOpacity
                     style={styles.buttonContainer}
+                    onPress={this.signUp}
                 >
                     <Text style={styles.button}> 
                         Sign Up
