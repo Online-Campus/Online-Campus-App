@@ -27,9 +27,9 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 const MainNavigator = createStackNavigator({
   Login: {screen: Login},
-  Create_complaint: {screen: Create_complaint},
   Complaint: {screen: Complaint},
   Home: { screen: HomeScreen },
+  Create_complaint: {screen: Create_complaint},
   editCView: { screen: editCView }
 });
 

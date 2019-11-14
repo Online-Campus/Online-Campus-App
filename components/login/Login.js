@@ -24,7 +24,7 @@ class Login extends React.Component {
                 />
                 <TextField
                     style={styles.input}
-                    label="email"
+                    label="Email"
                     returnKeyType="next"
                     onSubmitEditing={() => this.passwordInput.focus()}
                     keyboardType="email-address"
@@ -33,7 +33,7 @@ class Login extends React.Component {
                 />
                 <TextField
                     style={styles.input}
-                    label="password"
+                    label="Password"
                     secureTextEntry
                     returnKeyType="go"
                     ref={(input) => this.passwordInput = input}

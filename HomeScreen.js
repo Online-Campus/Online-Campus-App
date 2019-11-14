@@ -4,11 +4,12 @@ import {
     StyleSheet,
     ScrollView,
     View,
-    Button,
     Text,
     StatusBar,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Button } from 'react-native-material-ui';
+
 // import console = require('console');
 // import console = require('console');
 
@@ -16,30 +17,30 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class HomeScreen extends React.Component {
     // const {navigate} = this.props.navigation;
-    constructor(){
+    constructor() {
         super();
-        this.state = { 
+        this.state = {
             complaints: [
 
             ]
         }
     }
 
-    fetchComplaints(){
+    fetchComplaints() {
         fetch('http://127.0.0.1:8000/complaints/')
-            .then( (response) => response.json() )
-            .then( response => {
+            .then((response) => response.json())
+            .then(response => {
                 this.setState({
                     complaints: response
                 })
-            } )
+            })
     }
 
-    componentDidMount(){
+    componentDidMount() {
         // this.fetchComplaints();
     }
 
-    addComplaint(){
+    addComplaint() {
         console.log(this.state)
         let newComplaints = this.state.complaints
         const newComplaint = {
@@ -47,7 +48,7 @@ class HomeScreen extends React.Component {
             'title': 'New Complaint',
             'author': '',
             'content': ''
-        } 
+        }
         newComplaints = [
             ...newComplaints,
             newComplaint
@@ -63,35 +64,29 @@ class HomeScreen extends React.Component {
         // console.log(this.state)
         complaints = this.state.complaints.map(
             c => (
-                    <Button 
-                        onPress={() => this.props.navigation.navigate('editCView',
-                            {
-                                'id': c.id,
-                                'title': c.title,
-                                'content': c.content
-                            }
-                        )} 
-                        title={c.title} 
-                        style={styles.button} 
-                        key={c.id}
-                    >
-                    </Button>
-                )
+                <Button
+                    onPress={() => this.props.navigation.navigate('editCView',
+                        {
+                            'id': c.id,
+                            'title': c.title,
+                            'content': c.content
+                        }
+                    )}
+                    title={c.title}
+                    style={styles.button}
+                    key={c.id}
+                >
+                </Button>
+            )
         )
         return (
-            
+
             <View style={styles.container}>
-                { complaints }
+                {complaints}
                 <View
                     style={styles.circleButton}
                 >
-                    <TouchableOpacity 
-                        onPress={this.addComplaint.bind(this)} 
-                    >
-                        <Text>
-                            new Complaint
-                        </Text>
-                    </TouchableOpacity>
+                    <Button style={styles.createButton} raised primary text="+" onPress={() => this.props.navigation.navigate('Create_complaint')} title="Create_complaint" />
                 </View>
             </View>
         );
@@ -109,16 +104,18 @@ const styles = StyleSheet.create({
         marginTop: 150,
         marginLeft: 100,
     },
-    circleButton:{
+    circleButton: {
         padding: 5,
         height: 50,
-        width: 50,  
-        borderRadius:400, 
-        right:60,
+        width: 50,
+        borderRadius: 400,
+        right: 60,
         bottom: 80,
         position: "absolute",
-        backgroundColor:'#1CB9F0',
-      }
+    },
+    createButton: {
+        borderRadius:   1000,
+    }
 });
 
 export default HomeScreen;
