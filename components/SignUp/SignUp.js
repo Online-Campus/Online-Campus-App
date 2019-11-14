@@ -71,7 +71,7 @@ class SignUp extends React.Component {
                 />
                 <TextInput 
                     style = {styles.input}
-                    placeholder="re-enter Password"
+                    placeholder="Re-enter Password"
                     secureTextEntry
                     returnKeyType="go"
                     placeholderTextColor='rgba(255,255,255,0.7)'
