@@ -23,6 +23,7 @@ import editCView from './editCView'
 import Login from './components/login/Login'
 import Create_complaint from './components/complaint/Create_complaint'
 import Mess from './components/mess/Mess'
+import Leave from './components/Leave/Leave'
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
@@ -32,6 +33,7 @@ const MainNavigator = createStackNavigator({
   Home: { screen: HomeScreen },
   editCView: { screen: editCView },
   Create_complaint: {screen: Create_complaint},
+  Leave: {screen: Leave},
   Mess: {screen: Mess},
 });
 
