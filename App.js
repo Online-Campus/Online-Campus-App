@@ -29,8 +29,8 @@ const MainNavigator = createStackNavigator({
   Login: {screen: Login},
   Complaint: {screen: Complaint},
   Home: { screen: HomeScreen },
+  editCView: { screen: editCView },
   Create_complaint: {screen: Create_complaint},
-  editCView: { screen: editCView }
 });
 
 const App = createAppContainer(MainNavigator);
