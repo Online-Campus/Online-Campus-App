@@ -9,7 +9,8 @@ import {
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Button } from 'react-native-material-ui';
-import axios from 'axios'
+import axios from 'axios';
+import { Divider } from 'react-native-material-ui';
 // import console = require('console');
 // import console = require('console');
 
@@ -73,18 +74,22 @@ class HomeScreen extends React.Component {
         // console.log(this.state)
         complaints = this.state.complaints.map(
             c => (
-                <Button
-                    onPress={() => this.props.navigation.navigate('editCView',
-                        {
-                            'id': c.id,
-                            'title': c.title,
-                            'content': c.description
-                        }
-                    )}
-                    text={c.title}
-                    style={styles.button}
-                    key={c.id}
-                />
+                <View style={styles.list} key={c.id}>
+                    <Button
+                        onPress={() => this.props.navigation.navigate('editCView',
+                            {
+                                'id': c.id,
+                                'title': c.title,
+                                'content': c.description
+                            }
+                        )}
+                        text={c.title}
+                        key={c.id}
+                        raised 
+                        primary
+                    />
+                    <Divider/>
+                </View>
             )
         )
         return (
@@ -104,6 +109,9 @@ class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1
+    },
+    list: {
+        marginTop: 30,
     },
     button: {
         width: 200,

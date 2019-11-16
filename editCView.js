@@ -28,7 +28,7 @@ class editCView extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>{this.props.navigation.getParam('title', 'title')}</Text>
+                <Text style={styles.title}>{this.props.navigation.getParam('title', 'title')}</Text>
                 <Text>{this.props.navigation.getParam('content', 'content')}</Text>
                 <RadioForm
                     // style={styles.radio}
@@ -47,7 +47,8 @@ class editCView extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        marginTop: 5,
     },
     button: {
         width: 200,
@@ -58,6 +59,13 @@ const styles = StyleSheet.create({
     },
     radio: {
         marginTop: 3,
+    },
+    title: {
+        marginTop: 5,
+        height: 40,
+        color: 'blue',
+        marginLeft: 3,
+        paddingLeft: 5
     }
 });
 
