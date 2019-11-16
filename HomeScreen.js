@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Button } from 'react-native-material-ui';
-
+import axios from 'axios'
 // import console = require('console');
 // import console = require('console');
 
@@ -22,22 +22,31 @@ class HomeScreen extends React.Component {
         this.state = {
             complaints: [
 
-            ]
+            ],
+            token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTc2NDY4OTA5LCJqdGkiOiIxOGMwOTE0NzkwZDU0Y2UyOTM3YWRiYjRhZWY1ZjUyYiIsInVzZXJfaWQiOiJuZWVyYWo0In0.j9uwSGOLCYYLzdk3HPSEaydDs1kWzknq1fSbqsPWfdc'
         }
     }
 
     fetchComplaints() {
-        fetch('http://127.0.0.1:8000/complaints/')
-            .then((response) => response.json())
-            .then(response => {
-                this.setState({
-                    complaints: response
-                })
+        const headers = {
+            'Authorization': 'Bearer ' + this.state.token
+        }
+        axios({
+            method: 'GET',
+            url: 'https://201751025.pythonanywhere.com/complaint/',
+            headers: headers,
+            }).then((response) => {
+            console.log('resp', response.data)
+            this.setState({
+                complaints: response.data
             })
+            }).catch((error) => {
+                console.log('error')
+            });        
     }
 
     componentDidMount() {
-        // this.fetchComplaints();
+        this.fetchComplaints();
     }
 
     addComplaint() {
@@ -69,14 +78,13 @@ class HomeScreen extends React.Component {
                         {
                             'id': c.id,
                             'title': c.title,
-                            'content': c.content
+                            'content': c.description
                         }
                     )}
-                    title={c.title}
+                    text={c.title}
                     style={styles.button}
                     key={c.id}
-                >
-                </Button>
+                />
             )
         )
         return (
