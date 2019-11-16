@@ -29,7 +29,6 @@ class Create_complaint extends React.Component {
     }
 
     createComplaint = () => {
-        console.log('clicked')
         const headers = {
             'Authorization': 'Bearer ' + this.state.token
         }
@@ -38,19 +37,6 @@ class Create_complaint extends React.Component {
             'description': this.state.description
         }
 
-        console.log('start', this.state.token)
-        // axios.post(
-        //     'https://201751025.pythonanywhere.com/complaint/', postData,
-        //     headers
-        //     ).then((response) => {
-        //     console.log('resp', response.data)
-        //     this.setState({
-        //         complaints: response.data
-        //     })
-        //     console.log('done')
-        //     }).catch((error) => {
-        //         console.log('error', error)
-        //     });       
         axios({
             method: 'POST',
             url: 'https://201751025.pythonanywhere.com/complaint/',
