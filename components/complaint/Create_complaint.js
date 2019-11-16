@@ -50,7 +50,7 @@ class Create_complaint extends React.Component {
             }).catch((error) => {
                 console.log('error')
             });        
-
+            this.props.navigation.goBack()
     }
 
     render() {
