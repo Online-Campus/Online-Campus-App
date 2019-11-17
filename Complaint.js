@@ -19,7 +19,11 @@ class Complaint extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={styles.buttonContainer}>
-                    <Button onPress={() => this.props.navigation.navigate('Home')} title="Complaints" style={styles.button}>
+                    <Button onPress={() => this.props.navigation.navigate('Home',
+                        {
+                            'token': this.props.navigation.getParam('token', 'token')
+                        }
+                    )} title="Complaints" style={styles.button}>
 
                     </Button>
                 </View>
