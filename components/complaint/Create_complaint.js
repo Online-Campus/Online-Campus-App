@@ -43,7 +43,7 @@ class Create_complaint extends React.Component {
             data: postData,
             headers: headers,
             }).then((response) => {
-            console.log('resp', response.data)
+            console.log('', response.data)
             this.setState({
                 complaints: response.data
             })

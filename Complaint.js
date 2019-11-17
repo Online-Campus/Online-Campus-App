@@ -10,18 +10,21 @@ import {
 } from 'react-native';
 
 import Login from './components/login/Login'
+// import console = require('console');
 
 class Complaint extends React.Component {
     // const {navigate} = this.props.navigation;
 
     render() {
         // console.log('complaints', this.state.complaints)
+        console.log('entered', this.props.navigation.getParam('token', 'token'), this.props.navigation.getParam('role', 'role'))
         return (
             <View style={styles.container}>
                 <View style={styles.buttonContainer}>
                     <Button onPress={() => this.props.navigation.navigate('Home',
                         {
-                            'token': this.props.navigation.getParam('token', 'token')
+                            'token': this.props.navigation.getParam('token', 'token'),
+                            'role': this.props.navigation.getParam('role', 'role')
                         }
                     )} title="Complaints" style={styles.button}>
 
