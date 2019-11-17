@@ -46,7 +46,7 @@ class Login extends React.Component {
                 this.setState({
                     token: response.data
                 })
-                this.props.navigation.navigate('Home', {'token': response.data})
+                this.props.navigation.navigate('Complaint', {'token': response.data})
             }).catch((error) => {
                 console.log(error)
             });        
