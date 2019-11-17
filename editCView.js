@@ -11,6 +11,7 @@ import {
 // import { RadioButton } from 'react-native-material-ui';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 // import console = require('console');
+// import console = require('console');
 
 var radio_props = [
     { label: 'Posted', value: 0 },
@@ -26,17 +27,31 @@ class editCView extends React.Component {
     
 
     render() {
+        const role = this.props.navigation.getParam('role', 'role')
+        const status = this.props.navigation.getParam('status', 'status')
+
+        const statusField = (role == 'faculty')?(
+
+            <RadioForm
+                // style={styles.radio}
+                radio_props={radio_props}
+                initial={0}
+                onPress={(value) => { this.setState({ value: value }) }}
+                // formHorizontal={true}
+            />
+        ):(
+            <Text>
+                {status}
+            </Text>
+        )
+
         return (
             <View style={styles.container}>
                 <Text style={styles.title}>{this.props.navigation.getParam('title', 'title')}</Text>
+
+
                 <Text>{this.props.navigation.getParam('content', 'content')}</Text>
-                <RadioForm
-                    // style={styles.radio}
-                    radio_props={radio_props}
-                    initial={0}
-                    onPress={(value) => { this.setState({ value: value }) }}
-                    // formHorizontal={true}
-                />
+                <Text>{status}</Text>
                 {/* <RadioButton style={styles.radio} label="Pubished" checked value="Value" />
                 <RadioButton label="Processing" value="Value" />
                 <RadioButton label="Done" value="Value" /> */}

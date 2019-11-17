@@ -20,13 +20,39 @@ class Login extends React.Component {
     state = {
         username: '',
         password: '',
-        token: null
+        token: null,
+        role: ''
     }
 
 
     onChangeText = (key, val) => {
         this.setState({ [key]: val })
         console.log('ok', this.state.username, this.state.password)
+    }
+
+    // 201752006@iiitvadodara.ac.in
+    fetchDetails = () => {
+       //  console.log('clicked_token', this.state.token)
+        if(this.state.token){
+            const postData = {'username': 'neeraj4', 'password': 'p'}
+            const headers = {
+                'Authorization': 'Bearer ' + this.state.token.access
+            }
+            axios({
+                method: 'GET',
+                url: 'https://201751025.pythonanywhere.com/auth/current_user',
+                headers: headers
+            }).then((response) => {
+                // console.log('resp', response.data.current_user.account_type)
+                this.setState({
+                    role: response.data.current_user.account_type
+                })
+                console.log('final', this.state.token, response.data.current_user.account_type)
+                this.props.navigation.navigate('Complaint', { 'token': this.state.token, 'role': response.data.current_user.account_type })
+            }).catch((error) => {
+                console.log(error)
+            });
+        }
     }
 
     handleLogin = () => {
@@ -46,10 +72,14 @@ class Login extends React.Component {
             this.setState({
                 token: response.data
             })
-            this.props.navigation.navigate('Complaint', { 'token': response.data })
+            this.fetchDetails()
+            // this.props.navigation.navigate('Complaint', { 'token': response.data })
         }).catch((error) => {
             console.log(error)
         });
+
+
+        
     }
 
     render() {

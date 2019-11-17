@@ -28,7 +28,7 @@ class HomeScreen extends React.Component {
     }
 
     fetchComplaints() {
-        console.log('token', this.props.navigation.getParam('token', 'token'))
+        // console.log('token', this.props.navigation.getParam('token', 'token'))
         const headers = {
             'Authorization': 'Bearer ' + this.props.navigation.getParam('token', 'token').access
         }
@@ -37,7 +37,7 @@ class HomeScreen extends React.Component {
             url: 'https://201751025.pythonanywhere.com/complaint/',
             headers: headers,
         }).then((response) => {
-            console.log('resp', response.data)
+            // console.log('resp', response.data)
             this.setState({
                 complaints: response.data
             })
@@ -78,7 +78,9 @@ class HomeScreen extends React.Component {
     }
 
     render() {
+        // console.log('cpl', this.state.complaints)
         // console.log(this.state)
+        // console.log('entered', this.props.navigation.getParam('token', 'token'), this.props.navigation.getParam('role', 'role'))
         complaints = this.state.complaints.map(
             c => (
                 <View style={styles.list} key={c.id}>
@@ -87,7 +89,9 @@ class HomeScreen extends React.Component {
                             {
                                 'id': c.id,
                                 'title': c.title,
-                                'content': c.description
+                                'content': c.description,
+                                'role': this.props.navigation.getParam('role', 'role'),
+                                'status': c.status
                             }
                         )}
                         text={c.title}
@@ -99,7 +103,7 @@ class HomeScreen extends React.Component {
                 </View>
             )
         )
-        console.log('token', this.props.navigation.getParam('token', 'token'))
+        // console.log('token', this.props.navigation.getParam('token', 'token'))
         // const token = this.props.navigation.getParam('token', 'token')
         const token = this.props.navigation.getParam('token', 'token')
         return (
