@@ -9,7 +9,7 @@ import {
     StatusBar,
 } from 'react-native';
 // import { RadioButton } from 'react-native-material-ui';
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 // import console = require('console');
 // import console = require('console');
 
@@ -24,7 +24,7 @@ class editCView extends React.Component {
     constructor() {
         super()
     }
-    
+
 
     render() {
         const role = this.props.navigation.getParam('role', 'role')
@@ -33,7 +33,7 @@ class editCView extends React.Component {
         const statusField = (role == 'faculty')?(
 
             <RadioForm
-                // style={styles.radio}
+                style={styles.radio}
                 radio_props={radio_props}
                 initial={0}
                 onPress={(value) => { this.setState({ value: value }) }}
@@ -48,8 +48,6 @@ class editCView extends React.Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.title}>{this.props.navigation.getParam('title', 'title')}</Text>
-
-
                 <Text>{this.props.navigation.getParam('content', 'content')}</Text>
                 <Text>{status}</Text>
                 {/* <RadioButton style={styles.radio} label="Pubished" checked value="Value" />
@@ -73,14 +71,23 @@ const styles = StyleSheet.create({
         marginLeft: 100,
     },
     radio: {
-        marginTop: 3,
+        // marginLeft: 'auto',
+        // marginRight: 'auto',
+        paddingLeft: 30,
+        marginTop: 20,
     },
     title: {
         marginTop: 5,
-        height: 40,
-        color: 'blue',
-        marginLeft: 3,
-        paddingLeft: 5
+        color: '#1976d2',
+        fontSize: 40,
+        paddingLeft: 30,
+        textAlign: 'center'
+    },
+    description: {
+        fontSize: 20,
+        paddingLeft: 30,
+        marginTop: 20,
+        marginBottom: 40
     }
 });
 
