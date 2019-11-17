@@ -5,12 +5,13 @@ import {
     StyleSheet,
     ScrollView,
     View,
-    Button,
     Text,
     StatusBar,
 } from 'react-native';
 // import console = require('console');
-import axios from 'axios'
+import axios from 'axios';
+import { Button } from 'react-native-material-ui';
+import { TextField } from 'react-native-materialui-textfield';
 
 export default class Mess extends Component {
     constructor(props) {
@@ -20,7 +21,7 @@ export default class Mess extends Component {
         }
     }
 
-    getMenu(){
+    getMenu() {
         console.log('clickeddd')
         const token = this.props.navigation.getParam('token', 'token').access
         const headers = {
@@ -38,48 +39,48 @@ export default class Mess extends Component {
         }).catch((error) => {
             console.log(error)
         });
-    }   
+    }
 
-    componentWillMount(){
+    componentWillMount() {
         this.getMenu()
     }
 
     // 201752006@iiitvadodara.ac.in
     render() {
-        const menu =  this.state.menu
+        const menu = this.state.menu
         const day = (this.props.navigation.getParam('day', 'day'))
-        let breakfast = []; let lunch = []; let dinner =[];let snacks=[];
-       
-        if(menu.monday_breakfast){
+        let breakfast = []; let lunch = []; let dinner = []; let snacks = [];
+
+        if (menu.monday_breakfast) {
             console.log(
                 (menu.monday_breakfast).split(',')
             )
-            if(day == 'monday'){
+            if (day == 'monday') {
                 breakfast = (menu.monday_breakfast).split(',')
                 lunch = (menu.monday_lunch).split(',')
                 snacks = (menu.monday_snacks).split(',')
                 dinner = (menu.monday_dinner).split(',')
-            } else if(day == 'tuesday'){
+            } else if (day == 'tuesday') {
                 breakfast = (menu.tuesday_breakfast).split(',')
                 lunch = (menu.tuesday_lunch).split(',')
                 dinner = (menu.tuesday_dinner).split(',')
                 snacks = (menu.tuesday_snacks).split(',')
-            } else if(day == 'wednesday'){
+            } else if (day == 'wednesday') {
                 breakfast = (menu.wednesday_breakfast).split(',')
                 lunch = (menu.wednesday_lunch).split(',')
                 dinner = (menu.wednesday_dinner).split(',')
                 snacks = (menu.wednesday_snacks).split(',')
-            } else if(day == 'thursday'){
+            } else if (day == 'thursday') {
                 breakfast = (menu.thursday_breakfast).split(',')
                 lunch = (menu.thursday_lunch).split(',')
                 dinner = (menu.thursday_dinner).split(',')
                 snacks = (menu.thursday_snacks).split(',')
-            } else if(day == 'friday'){
+            } else if (day == 'friday') {
                 breakfast = (menu.friday_breakfast).split(',')
                 lunch = (menu.friday_lunch).split(',')
                 dinner = (menu.friday_dinner).split(',')
                 snacks = (menu.friday_snacks).split(',')
-            } else if(day == 'saturday'){
+            } else if (day == 'saturday') {
                 breakfast = (menu.saturday_breakfast).split(',')
                 lunch = (menu.saturday_lunch).split(',')
                 dinner = (menu.saturday_dinner).split(',')
@@ -94,74 +95,92 @@ export default class Mess extends Component {
 
         return (
             <View style={styles.container}>
-                <Text style={styles.head}>
-                    Breakfast
+                <ScrollView>
+                    <Text style={styles.head}>
+                        Breakfast
                 </Text>
-                <Text style={styles.detail}>
-                    {
-                        breakfast.map(
-                            item => {
-                                return(
-                                    <Text>
-                                        {item}
-                                        {'\n'}
-                                    </Text>
-                                ) 
-                            }
-                        )
-                    }
-                </Text>
-                <Text style={styles.head}>
-                    Lunch
-                </Text>
-                <Text style={styles.detail}>
-                    { 
-                        lunch.map(
+                    <Text style={styles.detail}>
+                        {
+                            breakfast.map(
                                 item => {
-                                    return(
+                                    return (
                                         <Text>
                                             {item}
                                             {'\n'}
                                         </Text>
-                                    ) 
+                                    )
                                 }
                             )
-                    }
+                        }
+                    </Text>
+                    <View style={styles.update}>
+                        <TextField label="Update Breakfast"></TextField>
+                        <Button primary raised text="Update Breakfast" onPress={() => { this.props.navigation.navigate('SignUp') }} />
+                    </View>
+                    <Text style={styles.head}>
+                        Lunch
                 </Text>
-                <Text style={styles.head}>
-                    Snacks
-                </Text>
-                <Text style={styles.detail}>
-                    { 
-                        snacks.map(
+                    <Text style={styles.detail}>
+                        {
+                            lunch.map(
                                 item => {
-                                    return(
+                                    return (
                                         <Text>
                                             {item}
                                             {'\n'}
                                         </Text>
-                                    ) 
+                                    )
                                 }
                             )
-                    }
+                        }
+                    </Text>
+                    <View style={styles.update}>
+                        <TextField label="Update Lunch"></TextField>
+                        <Button primary raised text="Update Lunch" onPress={() => { this.props.navigation.navigate('SignUp') }} />
+                    </View>
+                    <Text style={styles.head}>
+                        Snacks
                 </Text>
-                <Text style={styles.head}>
-                    Dinner
-                </Text>
-                <Text style={styles.detail}>
-                    { 
-                        dinner.map(
+                    <Text style={styles.detail}>
+                        {
+                            snacks.map(
                                 item => {
-                                    return(
+                                    return (
                                         <Text>
                                             {item}
                                             {'\n'}
                                         </Text>
-                                    ) 
+                                    )
                                 }
                             )
-                    }
+                        }
+                    </Text>
+                    <View style={styles.update}>
+                        <TextField label="Update Snacks"></TextField>
+                        <Button primary raised text="Update Snacks" onPress={() => { this.props.navigation.navigate('SignUp') }} />
+                    </View>
+                    <Text style={styles.head}>
+                        Dinner
                 </Text>
+                    <Text style={styles.detail}>
+                        {
+                            dinner.map(
+                                item => {
+                                    return (
+                                        <Text>
+                                            {item}
+                                            {'\n'}
+                                        </Text>
+                                    )
+                                }
+                            )
+                        }
+                    </Text>
+                    <View style={styles.update}>
+                        <TextField label="Update Dinner"></TextField>
+                        <Button primary raised text="Update Dinner" onPress={() => { this.props.navigation.navigate('SignUp') }} />
+                    </View>
+                </ScrollView>
             </View>
         )
     }
@@ -172,11 +191,15 @@ const styles = StyleSheet.create({
     head: {
         fontSize: 30,
         fontWeight: 'bold',
-        color: 'blue',
+        color: '#1976d2',
         textAlign: 'center',
     },
     detail: {
         fontSize: 18,
         textAlign: 'center',
+    },
+    update: {
+        // width: 250,
+        marginBottom: 35
     }
 });

@@ -82,6 +82,7 @@ class editCView extends React.Component {
             <View style={styles.container}>
                 <Text style={styles.title}>{this.props.navigation.getParam('title', 'title')}</Text>
                 <Text>{this.props.navigation.getParam('content', 'content')}</Text>
+                <Text style={styles.statusDescription}>Status:</Text>
                 {   status == "faculty" && 
                     <View>
                       <RadioForm
@@ -94,7 +95,7 @@ class editCView extends React.Component {
                   </View>
                 }
                 {
-                    status == "faculty" &&
+                    status != "faculty" &&
                     <Text>{status}</Text>
                 }
                 {/* <RadioButton style={styles.radio} label="Pubished" checked value="Value" />
@@ -118,14 +119,34 @@ const styles = StyleSheet.create({
         marginLeft: 100,
     },
     radio: {
-        marginTop: 3,
+        // marginLeft: 'auto',
+        // marginRight: 'auto',
+        paddingLeft: 30,
+        marginTop: 20,
     },
     title: {
         marginTop: 5,
-        height: 40,
-        color: 'blue',
-        marginLeft: 3,
-        paddingLeft: 5
+        color: '#1976d2',
+        fontSize: 40,
+        paddingLeft: 30,
+        textAlign: 'center'
+    },
+    description: {
+        fontSize: 20,
+        paddingLeft: 30,
+        marginTop: 20,
+        marginBottom: 40
+    },
+    statusDescription: {
+        paddingLeft: 30,
+        fontSize: 20,
+        marginTop: 50,
+        fontWeight: 'bold',
+    },
+    status: {
+        // textAlign: 'center',
+        fontSize: 20,
+        paddingLeft: 30,
     }
 });
 

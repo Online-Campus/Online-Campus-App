@@ -50,10 +50,10 @@ class HomeScreen extends React.Component {
 
     componentDidMount() {
         this.fetchComplaints()
-        
+
     }
 
-    componentDidUpdate(){
+    componentDidUpdate() {
         this.fetchComplaints()
     }
 
@@ -96,7 +96,7 @@ class HomeScreen extends React.Component {
                             }
                         )}
                         text={c.title}
-                        key={c.id} 
+                        key={c.id}
                         raised
                         primary
                     />
@@ -110,14 +110,18 @@ class HomeScreen extends React.Component {
         return (
 
             <View style={styles.container}>
-                {complaints}
+                <View>
+                    <ScrollView style={styles.scroll}>
+                        {complaints}
+                    </ScrollView>
+                </View>
                 <View
                     style={styles.circleButton}
                 >
-                    <Button 
-                        style={styles.createButton} raised primary text="+" 
-                        onPress={() => this.props.navigation.navigate('Create_complaint', { 'token': token.access })} 
-                        title="Create_complaint" 
+                    <Button
+                        style={styles.createButton} raised primary text="+"
+                        onPress={() => this.props.navigation.navigate('Create_complaint', { 'token': token.access })}
+                        title="Create_complaint"
                     />
                 </View>
             </View>
@@ -130,7 +134,13 @@ const styles = StyleSheet.create({
         flex: 1
     },
     list: {
-        marginTop: 30,
+        paddingLeft: 30,
+        paddingRight: 30,
+        paddingTop: 30
+    },
+    scroll: {
+        height: 500,
+        paddingBottom: 50
     },
     button: {
         width: 200,
@@ -145,13 +155,16 @@ const styles = StyleSheet.create({
         width: 50,
         // borderRadius: 400,
         right: 60,
-        bottom: 80,
+        bottom: 40,
         position: "absolute",
         // borderWidth: 3,
         // borderColor: 'blue',
     },
     createButton: {
         borderRadius: 1000,
+        right: 60,
+        bottom: 80,
+        position: "absolute",
     }
 });
 

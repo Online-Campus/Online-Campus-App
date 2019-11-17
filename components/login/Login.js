@@ -21,7 +21,8 @@ class Login extends React.Component {
         username: '',
         password: '',
         token: null,
-        role: ''
+        role: '',
+        error: ''
     }
 
 
@@ -75,7 +76,10 @@ class Login extends React.Component {
             this.fetchDetails()
             // this.props.navigation.navigate('Complaint', { 'token': response.data })
         }).catch((error) => {
-            console.log(error)
+            console.log(error);
+            this.setState({
+                error: 'Check your Email or Password'
+            })
         });
 
 
@@ -110,6 +114,9 @@ class Login extends React.Component {
                 <View style={styles.Button}>
                     <Button primary raised text="Login" onPress={this.handleLogin} />
                 </View>
+                <Text style={styles.error}>
+                    {this.state.error}
+                </Text>
                 <View style={styles.Button}>
                     <Button primary raised text="New User! Create New Account" onPress={() => { this.props.navigation.navigate('SignUp') }} />
                 </View>
@@ -126,6 +133,12 @@ const styles = StyleSheet.create({
     },
     Button: {
         marginTop: 20,
+    },
+    error: {
+        textAlign: 'center',
+        fontSize: 20,
+        color: 'red',
+        marginTop: 5
     }
 });
 
