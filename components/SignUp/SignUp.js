@@ -16,14 +16,18 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class SignUp extends React.Component {
     state = {
-        email: '', password: '', re_password: '', first_name: '', last_name: ''
+        email: '', password: '', re_password: '', first_name: '', last_name: '', error: ''
     }
     onChangeText = (key, val) => {
         this.setState({ [key]: val })
     }
+    validateEmail = (email) => {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+      }
     signUp = () => {
         console.log('clicked')
-        const { email, first_name, last_name, password } = this.state
+        const { email, first_name, last_name, password, re_password } = this.state
 
         const postData = {
             "first_name": first_name,
@@ -31,6 +35,22 @@ class SignUp extends React.Component {
             "username": email,
             "email": email,
             "password": password,
+        }
+
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if(!re.test(email)){
+            this.setState({
+                error: 'Email is incorrect.'
+            })
+            return;
+        }
+
+        if(password != re_password){
+            this.setState({
+                error: 'Password does not match'
+            })
+            return;
         }
 
         try {
@@ -102,6 +122,9 @@ class SignUp extends React.Component {
                 <View style={styles.Button}>
                     <Button primary raised text="Sign Up" onPress={this.signUp} />
                 </View>
+                <Text style={styles.error}>
+                    {this.state.error}
+                </Text>
                 <View style={styles.Button}>
                     <Button primary raised text="Already a user? Log In" onPress={() => { this.props.navigation.navigate('Login') }} />
                 </View>
@@ -117,6 +140,12 @@ const styles = StyleSheet.create({
     },
     Button: {
         marginTop: 20,
+    },
+    error: {
+        textAlign: 'center',
+        fontSize: 20,
+        color: 'red',
+        marginTop: 5
     }
 });
 
