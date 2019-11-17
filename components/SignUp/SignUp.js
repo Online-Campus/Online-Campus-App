@@ -10,6 +10,7 @@ import {
     StatusBar,
     KeyboardAvoidingView
 } from 'react-native';
+import axios from 'axios'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class SignUp extends React.Component {
@@ -19,12 +20,31 @@ class SignUp extends React.Component {
     onChangeText = (key, val) => {
         this.setState({ [key]: val })
     }
-    signUp = async () => {
+    signUp = () => {
+        console.log('clicked')
         const { email, first_name, last_name, password } = this.state
+
+        const postData = {
+            "first_name": first_name,
+            "last_name": last_name,
+            "username": email,
+            "email": email,
+            "password": password,
+        }
+
         try {
-          console.log('SignUp ho gya')
+            axios({
+                method: 'POST',
+                url: 'https://201751025.pythonanywhere.com/auth/register',
+                data: postData
+                }).then((response) => {
+                    console.log('resp', response.data)
+                
+                }).catch((error) => {
+                    console.log('error')
+                });        
         } catch (err) {
-          console.log('Error aa gaya')
+          console.log(err)
         }
     }
 
