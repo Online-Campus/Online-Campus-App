@@ -16,10 +16,6 @@ export default class Mess extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            breakfast: ['some', 'unhealthy', 'fried', 'food'],
-            lunch:  ['paneer', 'dal', 'rice'],
-            snacks: ['again', 'some', 'unhealthy', 'fried', 'food'],
-            dinner:   ['paneer', 'dal', 'rice'],
             menu: {}
         }
     }
