@@ -46,6 +46,7 @@ class SignUp extends React.Component {
         } catch (err) {
           console.log(err)
         }
+        this.props.navigation.navigate('Login')
     }
 
 
@@ -104,6 +105,14 @@ class SignUp extends React.Component {
                 >
                     <Text style={styles.button}> 
                         Sign Up
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.buttonContainer}
+                    onPress={() => {this.props.navigation.navigate('Login')}}
+                >
+                    <Text style={styles.button}> 
+                        Already a user? Log In
                     </Text>
                 </TouchableOpacity>
                 {/* Idhar ek login ka button bhi add karna hai */}
