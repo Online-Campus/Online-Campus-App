@@ -15,7 +15,7 @@ import { Button } from 'react-native-material-ui';
 import { TextField } from 'react-native-materialui-textfield';
 
 
-class Login extends React.Component { 
+class Login extends React.Component {
 
     state = {
         username: '',
@@ -23,7 +23,7 @@ class Login extends React.Component {
         token: null
     }
 
-    
+
     onChangeText = (key, val) => {
         this.setState({ [key]: val })
         console.log('ok', this.state.username, this.state.password)
@@ -41,17 +41,17 @@ class Login extends React.Component {
             method: 'POST',
             url: 'https://201751025.pythonanywhere.com/auth/token/obtain',
             data: postData
-            }).then((response) => {
-                console.log('resp', response.data.access)
-                this.setState({
-                    token: response.data
-                })
-                this.props.navigation.navigate('Complaint', {'token': response.data})
-            }).catch((error) => {
-                console.log(error)
-            });        
+        }).then((response) => {
+            console.log('resp', response.data.access)
+            this.setState({
+                token: response.data
+            })
+            this.props.navigation.navigate('Complaint', { 'token': response.data })
+        }).catch((error) => {
+            console.log(error)
+        });
     }
-    
+
     render() {
 
         return (
@@ -77,7 +77,12 @@ class Login extends React.Component {
                     ref={(input) => this.passwordInput = input}
                     onChangeText={val => this.onChangeText('password', val)}
                 />
-                <Button primary raised text="Login" onPress={this.handleLogin}/>
+                <View style={styles.Button}>
+                    <Button primary raised text="Login" onPress={this.handleLogin} />
+                </View>
+                <View style={styles.Button}>
+                    <Button primary raised text="New User! Create New Account" onPress={() => { this.props.navigation.navigate('SignUp') }} />
+                </View>
             </View>
         );
     }
@@ -88,6 +93,9 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white',
         padding: 20
+    },
+    Button: {
+        marginTop: 20,
     }
 });
 
