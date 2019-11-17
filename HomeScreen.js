@@ -23,14 +23,14 @@ class HomeScreen extends React.Component {
         this.state = {
             complaints: [
 
-            ],
-            token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTc2NDY4OTA5LCJqdGkiOiIxOGMwOTE0NzkwZDU0Y2UyOTM3YWRiYjRhZWY1ZjUyYiIsInVzZXJfaWQiOiJuZWVyYWo0In0.j9uwSGOLCYYLzdk3HPSEaydDs1kWzknq1fSbqsPWfdc'
+            ]
         }
     }
 
     fetchComplaints() {
+        console.log('token', this.props.navigation.getParam('token', 'token'))
         const headers = {
-            'Authorization': 'Bearer ' + this.state.token
+            'Authorization': 'Bearer ' + this.props.navigation.getParam('token', 'token').access
         }
         axios({
             method: 'GET',
@@ -49,7 +49,12 @@ class HomeScreen extends React.Component {
     }
 
     componentDidMount() {
-        this.fetchComplaints();
+        this.fetchComplaints()
+        
+    }
+
+    componentDidUpdate(){
+        this.fetchComplaints()
     }
 
     addComplaint() {
