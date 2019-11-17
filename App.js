@@ -24,6 +24,7 @@ import SignUp from './components/SignUp/SignUp'
 import Login from './components/login/Login'
 import Create_complaint from './components/complaint/Create_complaint'
 import Mess from './components/mess/Mess'
+import Menu from './components/mess/Menu'
 import Leave from './components/Leave/Leave'
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -37,6 +38,7 @@ const MainNavigator = createStackNavigator({
   Create_complaint: {screen: Create_complaint},
   Leave: {screen: Leave},
   Mess: {screen: Mess},
+  Menu: {screen: Menu},
 });
 
 const App = createAppContainer(MainNavigator);
