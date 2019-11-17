@@ -41,9 +41,11 @@ class HomeScreen extends React.Component {
             this.setState({
                 complaints: response.data
             })
+
         }).catch((error) => {
             console.log(error)
         });
+
     }
 
     componentDidMount() {

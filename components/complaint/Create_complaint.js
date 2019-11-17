@@ -52,6 +52,7 @@ class Create_complaint extends React.Component {
             });        
             this.props.navigation.navigate('Complaint')
             // this.props.navigation.dispatch(NavigationActions.back())
+
     }
 
     componentDidMount(){
@@ -61,6 +62,7 @@ class Create_complaint extends React.Component {
         console.log(
             'token2', this.props.navigation.getParam('token', 'token')
         )
+
     }
 
     render() {
