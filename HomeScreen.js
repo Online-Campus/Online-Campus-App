@@ -109,9 +109,11 @@ class HomeScreen extends React.Component {
         return (
 
             <View style={styles.container}>
-                <ScrollView>
-                    {complaints}
-                </ScrollView>
+                <View>
+                    <ScrollView style={styles.scroll}>
+                        {complaints}
+                    </ScrollView>
+                </View>
                 <View
                     style={styles.circleButton}
                 >
@@ -135,6 +137,10 @@ const styles = StyleSheet.create({
         paddingRight: 30,
         paddingTop: 30
     },
+    scroll: {
+        height: 500,
+        paddingBottom: 50
+    },
     button: {
         width: 200,
         height: 70,
@@ -148,7 +154,7 @@ const styles = StyleSheet.create({
         width: 50,
         // borderRadius: 400,
         right: 60,
-        bottom: 80,
+        bottom: 40,
         position: "absolute",
         // borderWidth: 3,
         // borderColor: 'blue',
