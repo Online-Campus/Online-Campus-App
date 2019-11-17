@@ -129,7 +129,9 @@ const styles = StyleSheet.create({
         flex: 1
     },
     list: {
-        marginTop: 30,
+        paddingLeft: 30,
+        paddingRight: 30,
+        paddingTop: 30
     },
     button: {
         width: 200,
