@@ -111,16 +111,16 @@ class HomeScreen extends React.Component {
             <View style={styles.container}>
                 <ScrollView>
                     {complaints}
-                    <View
-                        style={styles.circleButton}
-                    >
-                        <Button
-                            style={styles.createButton} raised primary text="+"
-                            onPress={() => this.props.navigation.navigate('Create_complaint', { 'token': token.access })}
-                            title="Create_complaint"
-                        />
-                    </View>
                 </ScrollView>
+                <View
+                    style={styles.circleButton}
+                >
+                    <Button
+                        style={styles.createButton} raised primary text="+"
+                        onPress={() => this.props.navigation.navigate('Create_complaint', { 'token': token.access })}
+                        title="Create_complaint"
+                    />
+                </View>
             </View>
         );
     }
