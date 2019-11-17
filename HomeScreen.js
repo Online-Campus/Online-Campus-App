@@ -141,13 +141,7 @@ const styles = StyleSheet.create({
         // borderColor: 'blue',
     },
     createButton: {
-<<<<<<< HEAD
         borderRadius: 1000,
-=======
-        borderRadius:   1000,
-        borderWidth: 3,
-        borderColor: 'white',
->>>>>>> Created mess Page
     }
 });
 
