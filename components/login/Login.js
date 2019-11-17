@@ -14,6 +14,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Button } from 'react-native-material-ui';
 import { TextField } from 'react-native-materialui-textfield';
 
+
 class Login extends React.Component { 
 
     state = {
@@ -25,15 +26,17 @@ class Login extends React.Component {
     
     onChangeText = (key, val) => {
         this.setState({ [key]: val })
+        console.log('ok', this.state.username, this.state.password)
     }
 
     handleLogin = () => {
-        // console.log('clicked')
-        // const postData = {
-        //     'username': this.state.username,
-        //     'password': this.state.password
-        // }
-        const postData = {'username': 'neeraj4', 'password': 'p'}
+        console.log('clicked')
+        const postData = {
+            'username': this.state.username,
+            'password': this.state.password
+        }
+        console.log('ok', this.state.username, this.state.password)
+        // const postData = {'username': 'neeraj4', 'password': 'p'}
         axios({
             method: 'POST',
             url: 'https://201751025.pythonanywhere.com/auth/token/obtain',
@@ -43,6 +46,7 @@ class Login extends React.Component {
                 this.setState({
                     token: response.data
                 })
+                this.props.navigation.navigate('Home', {'token': response.data})
             }).catch((error) => {
                 console.log(error)
             });        
@@ -63,6 +67,7 @@ class Login extends React.Component {
                     keyboardType="email-address"
                     autoCapitalize="none"
                     autoCorrect={false}
+                    onChangeText={val => this.onChangeText('username', val)}
                 />
                 <TextField
                     style={styles.input}
@@ -70,6 +75,7 @@ class Login extends React.Component {
                     secureTextEntry
                     returnKeyType="go"
                     ref={(input) => this.passwordInput = input}
+                    onChangeText={val => this.onChangeText('password', val)}
                 />
                 <Button primary raised text="Login" onPress={this.handleLogin}/>
             </View>
