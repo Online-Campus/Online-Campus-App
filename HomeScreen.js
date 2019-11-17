@@ -36,14 +36,16 @@ class HomeScreen extends React.Component {
             method: 'GET',
             url: 'https://201751025.pythonanywhere.com/complaint/',
             headers: headers,
-            }).then((response) => {
+        }).then((response) => {
             console.log('resp', response.data)
             this.setState({
                 complaints: response.data
             })
-            }).catch((error) => {
-                console.log(error)
-            });        
+
+        }).catch((error) => {
+            console.log(error)
+        });
+
     }
 
     componentDidMount() {
@@ -84,14 +86,17 @@ class HomeScreen extends React.Component {
                             }
                         )}
                         text={c.title}
-                        key={c.id}
-                        raised 
+                        key={c.id} 
+                        raised
                         primary
                     />
-                    <Divider/>
+                    <Divider />
                 </View>
             )
         )
+        console.log('token', this.props.navigation.getParam('token', 'token'))
+        // const token = this.props.navigation.getParam('token', 'token')
+        const token = this.props.navigation.getParam('token', 'token')
         return (
 
             <View style={styles.container}>
@@ -99,7 +104,11 @@ class HomeScreen extends React.Component {
                 <View
                     style={styles.circleButton}
                 >
-                    <Button style={styles.createButton} raised primary text="+" onPress={() => this.props.navigation.navigate('Create_complaint')} title="Create_complaint" />
+                    <Button 
+                        style={styles.createButton} raised primary text="+" 
+                        onPress={() => this.props.navigation.navigate('Create_complaint', { 'token': token.access })} 
+                        title="Create_complaint" 
+                    />
                 </View>
             </View>
         );
@@ -130,7 +139,7 @@ const styles = StyleSheet.create({
         position: "absolute",
     },
     createButton: {
-        borderRadius:   1000,
+        borderRadius: 1000,
     }
 });
 

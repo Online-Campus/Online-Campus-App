@@ -21,7 +21,7 @@ class Create_complaint extends React.Component {
     state = {
         title: '',
         description: '',
-        token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTc2NDY4OTA5LCJqdGkiOiIxOGMwOTE0NzkwZDU0Y2UyOTM3YWRiYjRhZWY1ZjUyYiIsInVzZXJfaWQiOiJuZWVyYWo0In0.j9uwSGOLCYYLzdk3HPSEaydDs1kWzknq1fSbqsPWfdc'
+        token: null
     }
 
     onChangeText = (key, val) => {
@@ -52,6 +52,17 @@ class Create_complaint extends React.Component {
             });        
             this.props.navigation.navigate('Complaint')
             // this.props.navigation.dispatch(NavigationActions.back())
+
+    }
+
+    componentDidMount(){
+        this.setState({
+            token: this.props.navigation.getParam('token', 'token')
+        })
+        console.log(
+            'token2', this.props.navigation.getParam('token', 'token')
+        )
+
     }
 
     render() {
