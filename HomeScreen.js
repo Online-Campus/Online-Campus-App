@@ -133,13 +133,21 @@ const styles = StyleSheet.create({
         padding: 5,
         height: 50,
         width: 50,
-        borderRadius: 400,
+        // borderRadius: 400,
         right: 60,
         bottom: 80,
         position: "absolute",
+        // borderWidth: 3,
+        // borderColor: 'blue',
     },
     createButton: {
+<<<<<<< HEAD
         borderRadius: 1000,
+=======
+        borderRadius:   1000,
+        borderWidth: 3,
+        borderColor: 'white',
+>>>>>>> Created mess Page
     }
 });
 
