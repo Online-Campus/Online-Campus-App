@@ -91,7 +91,8 @@ class HomeScreen extends React.Component {
                                 'title': c.title,
                                 'content': c.description,
                                 'role': this.props.navigation.getParam('role', 'role'),
-                                'status': c.status
+                                'status': c.status,
+                                'token': this.props.navigation.getParam('token', 'token').access
                             }
                         )}
                         text={c.title}
