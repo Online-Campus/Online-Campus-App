@@ -15,40 +15,72 @@ export default class Mess extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            breakfast: 'paneer',
-            lunch: '-',
-            snacks: '-',
-            dinner: '-',
+            breakfast: ['some', 'unhealthy', 'fried', 'food'],
+            lunch:  ['paneer', 'dal', 'rice'],
+            snacks: ['again', 'some', 'unhealthy', 'fried', 'food'],
+            dinner:   ['paneer', 'dal', 'rice'],
         }
     }
 
     render() {
-        const state = this.state;
+        const breakfast = this.state.breakfast.map(
+            (item, index) => (
+                
+                    <Text>{item}{'\n'}{'\n'}</Text>
+                
+            )
+        )
+
+        const lunch = this.state.lunch.map(
+            (item, index) => (
+                
+                    <Text>{item}{'\n'}{'\n'}</Text>
+                
+            )
+        )
+
+        const snacks = this.state.snacks.map(
+            (item, index) => (
+                
+                    <Text>{item}{'\n'}{'\n'}</Text>
+                
+            )
+        )
+
+        const dinner = this.state.dinner.map(
+            (item, index) => (
+                
+                    <Text>{item}{'\n'}{'\n'}</Text>
+                
+            )
+        )
+    
+
         return (
             <View style={styles.container}>
                 <Text style={styles.head}>
                     Breakfast
                 </Text>
                 <Text style={styles.detail}>
-                    {this.state.breakfast}{'\n'}{'\n'}
+                    {breakfast}
                 </Text>
                 <Text style={styles.head}>
                     Lunch
                 </Text>
                 <Text style={styles.detail}>
-                    {this.state.lunch}{'\n'}{'\n'}
+                    {lunch}{'\n'}{'\n'}
                 </Text>
                 <Text style={styles.head}>
                     Snacks
                 </Text>
                 <Text style={styles.detail}>
-                    {this.state.snacks}{'\n'}{'\n'}
+                    {snacks}{'\n'}{'\n'}
                 </Text>
                 <Text style={styles.head}>
                     Dinner
                 </Text>
                 <Text style={styles.detail}>
-                    {this.state.dinner}{'\n'}{'\n'}
+                    {dinner}{'\n'}{'\n'}
                 </Text>
             </View>
         )
