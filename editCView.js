@@ -49,6 +49,7 @@ class editCView extends React.Component {
             <View style={styles.container}>
                 <Text style={styles.title}>{this.props.navigation.getParam('title', 'title')}</Text>
                 <Text style={styles.description}>{this.props.navigation.getParam('content', 'content')}</Text>
+                <Text style={styles.statusDescription}>Status:</Text>
                 <Text style={styles.status}>{status}</Text>
                 {/* <RadioButton style={styles.radio} label="Pubished" checked value="Value" />
                 <RadioButton label="Processing" value="Value" />
@@ -89,10 +90,14 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 40
     },
+    statusDescription: {
+        paddingLeft: 30,
+        fontSize: 20,
+        marginTop: 50,
+        fontWeight: 'bold',
+    },
     status: {
         // textAlign: 'center',
-        fontWeight: 'bold',
-        marginTop: 50,
         fontSize: 20,
         paddingLeft: 30,
     }
