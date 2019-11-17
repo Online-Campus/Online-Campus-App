@@ -43,6 +43,10 @@ class Complaint extends React.Component {
                     <Button onPress={() => this.props.navigation.navigate('Leave')} title="Leave" style={styles.button}>
                     </Button>
                 </View>
+                <View style={styles.out}>
+                    <Button onPress={() => this.props.navigation.navigate('Login')} title="Sign Out" style={styles.outButton}>
+                    </Button>
+                </View>
             </View>
         );
     }
@@ -59,8 +63,21 @@ const styles = StyleSheet.create({
         marginTop: 150,
         marginLeft: 100,
     },
+    outButton: {
+        backgroundColor: 'red',
+    },
     buttonContainer: {
         marginTop: 30,
+    },
+    out: {
+        bottom: 40,
+        position: 'absolute',
+        width: 100,
+        left: 300,
+        textAlign: 'center',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        backgroundColor: 'red',
     }
 });
 
