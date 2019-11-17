@@ -45,27 +45,27 @@ export default class Mess extends Component {
           </Button>
         </View>
         <View style={styles.buttonContainer}>
-          <Button onPress={() => this.props.navigation.navigate('Leave')} title="Tuesday" style={styles.button}>
+          <Button onPress={() => this.props.navigation.navigate('Menu')} title="Tuesday" style={styles.button}>
           </Button>
         </View>
         <View style={styles.buttonContainer}>
-          <Button onPress={() => this.props.navigation.navigate('Leave')} title="Wednesday" style={styles.button}>
+          <Button onPress={() => this.props.navigation.navigate('Menu')} title="Wednesday" style={styles.button}>
           </Button>
         </View>
         <View style={styles.buttonContainer}>
-          <Button onPress={() => this.props.navigation.navigate('Leave')} title="Thursday" style={styles.button}>
+          <Button onPress={() => this.props.navigation.navigate('Menu')} title="Thursday" style={styles.button}>
           </Button>
         </View>
         <View style={styles.buttonContainer}>
-          <Button onPress={() => this.props.navigation.navigate('Leave')} title="Friday" style={styles.button}>
+          <Button onPress={() => this.props.navigation.navigate('Menu')} title="Friday" style={styles.button}>
           </Button>
         </View>
         <View style={styles.buttonContainer}>
-          <Button onPress={() => this.props.navigation.navigate('Leave')} title="Saturday" style={styles.button}>
+          <Button onPress={() => this.props.navigation.navigate('Menu')} title="Saturday" style={styles.button}>
           </Button>
         </View>
         <View style={styles.buttonContainer}>
-          <Button onPress={() => this.props.navigation.navigate('Leave')} title="Sunday" style={styles.button}>
+          <Button onPress={() => this.props.navigation.navigate('Menu')} title="Sunday" style={styles.button}>
           </Button>
         </View>
       </View>
