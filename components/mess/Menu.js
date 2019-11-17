@@ -95,78 +95,92 @@ export default class Mess extends Component {
 
         return (
             <View style={styles.container}>
-                <Text style={styles.head}>
-                    Breakfast
+                <ScrollView>
+                    <Text style={styles.head}>
+                        Breakfast
                 </Text>
-                <Text style={styles.detail}>
-                    {
-                        breakfast.map(
-                            item => {
-                                return (
-                                    <Text>
-                                        {item}
-                                        {'\n'}
-                                    </Text>
-                                )
-                            }
-                        )
-                    }
+                    <Text style={styles.detail}>
+                        {
+                            breakfast.map(
+                                item => {
+                                    return (
+                                        <Text>
+                                            {item}
+                                            {'\n'}
+                                        </Text>
+                                    )
+                                }
+                            )
+                        }
+                    </Text>
+                    <View style={styles.update}>
+                        <TextField label="Update Breakfast"></TextField>
+                        <Button primary raised text="Update Breakfast" onPress={() => { this.props.navigation.navigate('SignUp') }} />
+                    </View>
+                    <Text style={styles.head}>
+                        Lunch
                 </Text>
-                {/* <View style={styles.update}>
-                    <TextField label="Update Breakfast"></TextField>
-                    <Button primary raised text="Update Breakfast" onPress={() => { this.props.navigation.navigate('SignUp') }} />
-                </View> */}
-                <Text style={styles.head}>
-                    Lunch
+                    <Text style={styles.detail}>
+                        {
+                            lunch.map(
+                                item => {
+                                    return (
+                                        <Text>
+                                            {item}
+                                            {'\n'}
+                                        </Text>
+                                    )
+                                }
+                            )
+                        }
+                    </Text>
+                    <View style={styles.update}>
+                        <TextField label="Update Lunch"></TextField>
+                        <Button primary raised text="Update Lunch" onPress={() => { this.props.navigation.navigate('SignUp') }} />
+                    </View>
+                    <Text style={styles.head}>
+                        Snacks
                 </Text>
-                <Text style={styles.detail}>
-                    {
-                        lunch.map(
-                            item => {
-                                return (
-                                    <Text>
-                                        {item}
-                                        {'\n'}
-                                    </Text>
-                                )
-                            }
-                        )
-                    }
+                    <Text style={styles.detail}>
+                        {
+                            snacks.map(
+                                item => {
+                                    return (
+                                        <Text>
+                                            {item}
+                                            {'\n'}
+                                        </Text>
+                                    )
+                                }
+                            )
+                        }
+                    </Text>
+                    <View style={styles.update}>
+                        <TextField label="Update Snacks"></TextField>
+                        <Button primary raised text="Update Snacks" onPress={() => { this.props.navigation.navigate('SignUp') }} />
+                    </View>
+                    <Text style={styles.head}>
+                        Dinner
                 </Text>
-                <Text style={styles.head}>
-                    Snacks
-                </Text>
-                <Text style={styles.detail}>
-                    {
-                        snacks.map(
-                            item => {
-                                return (
-                                    <Text>
-                                        {item}
-                                        {'\n'}
-                                    </Text>
-                                )
-                            }
-                        )
-                    }
-                </Text>
-                <Text style={styles.head}>
-                    Dinner
-                </Text>
-                <Text style={styles.detail}>
-                    {
-                        dinner.map(
-                            item => {
-                                return (
-                                    <Text>
-                                        {item}
-                                        {'\n'}
-                                    </Text>
-                                )
-                            }
-                        )
-                    }
-                </Text>
+                    <Text style={styles.detail}>
+                        {
+                            dinner.map(
+                                item => {
+                                    return (
+                                        <Text>
+                                            {item}
+                                            {'\n'}
+                                        </Text>
+                                    )
+                                }
+                            )
+                        }
+                    </Text>
+                    <View style={styles.update}>
+                        <TextField label="Update Dinner"></TextField>
+                        <Button primary raised text="Update Dinner" onPress={() => { this.props.navigation.navigate('SignUp') }} />
+                    </View>
+                </ScrollView>
             </View>
         )
     }
@@ -186,5 +200,6 @@ const styles = StyleSheet.create({
     },
     update: {
         // width: 250,
+        marginBottom: 35
     }
 });

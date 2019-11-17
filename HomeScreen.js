@@ -50,10 +50,10 @@ class HomeScreen extends React.Component {
 
     componentDidMount() {
         this.fetchComplaints()
-        
+
     }
 
-    componentDidUpdate(){
+    componentDidUpdate() {
         this.fetchComplaints()
     }
 
@@ -95,7 +95,7 @@ class HomeScreen extends React.Component {
                             }
                         )}
                         text={c.title}
-                        key={c.id} 
+                        key={c.id}
                         raised
                         primary
                     />
@@ -109,16 +109,18 @@ class HomeScreen extends React.Component {
         return (
 
             <View style={styles.container}>
-                {complaints}
-                <View
-                    style={styles.circleButton}
-                >
-                    <Button 
-                        style={styles.createButton} raised primary text="+" 
-                        onPress={() => this.props.navigation.navigate('Create_complaint', { 'token': token.access })} 
-                        title="Create_complaint" 
-                    />
-                </View>
+                <ScrollView>
+                    {complaints}
+                    <View
+                        style={styles.circleButton}
+                    >
+                        <Button
+                            style={styles.createButton} raised primary text="+"
+                            onPress={() => this.props.navigation.navigate('Create_complaint', { 'token': token.access })}
+                            title="Create_complaint"
+                        />
+                    </View>
+                </ScrollView>
             </View>
         );
     }
@@ -153,6 +155,9 @@ const styles = StyleSheet.create({
     },
     createButton: {
         borderRadius: 1000,
+        right: 60,
+        bottom: 80,
+        position: "absolute",
     }
 });
 
