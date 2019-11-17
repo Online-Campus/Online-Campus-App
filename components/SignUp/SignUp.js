@@ -4,13 +4,14 @@ import {
     StyleSheet,
     ScrollView,
     View,
-    Button,
     Text,
     TextInput,
     StatusBar,
     KeyboardAvoidingView
 } from 'react-native';
-import axios from 'axios'
+import axios from 'axios';
+import { TextField } from 'react-native-materialui-textfield';
+import { Button } from 'react-native-material-ui';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class SignUp extends React.Component {
@@ -37,14 +38,14 @@ class SignUp extends React.Component {
                 method: 'POST',
                 url: 'https://201751025.pythonanywhere.com/auth/register',
                 data: postData
-                }).then((response) => {
-                    console.log('resp', response.data)
-                
-                }).catch((error) => {
-                    console.log('error')
-                });        
+            }).then((response) => {
+                console.log('resp', response.data)
+
+            }).catch((error) => {
+                console.log('error')
+            });
         } catch (err) {
-          console.log(err)
+            console.log(err)
         }
         this.props.navigation.navigate('Login')
     }
@@ -54,10 +55,9 @@ class SignUp extends React.Component {
         return (
             <View KeyboardAvoidingView behaviour="padding" style={styles.container}>
                 <StatusBar backgroundColor="blue" barStyle="light-content" />
- 
-                <TextInput 
-                    style = {styles.input}
-                    placeholder="Email"
+
+                <TextField
+                    label="Email"
                     returnKeyType="next"
                     keyboardType="email-address"
                     autoCapitalize="none"
@@ -65,57 +65,46 @@ class SignUp extends React.Component {
                     placeholderTextColor='rgba(255,255,255,0.7)'
                     onChangeText={val => this.onChangeText('email', val)}
                 />
-                <TextInput 
-                    style = {styles.input}
-                    placeholder="First Name"
+                <TextField
+                    style={styles.input}
+                    label="First Name"
                     returnKeyType="next"
                     autoCorrect={false}
                     placeholderTextColor='rgba(255,255,255,0.7)'
                     onChangeText={val => this.onChangeText('first_name', val)}
                 />
-                 <TextInput 
-                    style = {styles.input}
-                    placeholder="Last Name"
+                <TextField
+                    style={styles.input}
+                    label="Last Name"
                     returnKeyType="next"
                     autoCorrect={false}
                     placeholderTextColor='rgba(255,255,255,0.7)'
                     onChangeText={val => this.onChangeText('last_name', val)}
                 />
-                <TextInput 
-                    style = {styles.input}
-                    placeholder="Password"
+                <TextField
+                    style={styles.input}
+                    label="Password"
                     secureTextEntry
                     returnKeyType="next"
                     placeholderTextColor='rgba(255,255,255,0.7)'
                     onChangeText={val => this.onChangeText('password', val)}
-                    ref = {(input) => this.passwordInput=input}
+                    ref={(input) => this.passwordInput = input}
                 />
-                <TextInput 
-                    style = {styles.input}
-                    placeholder="Re-enter Password"
+                <TextField
+                    style={styles.input}
+                    label="Re-enter Password"
                     secureTextEntry
                     returnKeyType="go"
                     placeholderTextColor='rgba(255,255,255,0.7)'
                     onChangeText={val => this.onChangeText('re_password', val)}
-                    ref = {(input) => this.passwordInput=input}
+                    ref={(input) => this.passwordInput = input}
                 />
-                <TouchableOpacity
-                    style={styles.buttonContainer}
-                    onPress={this.signUp}
-                >
-                    <Text style={styles.button}> 
-                        Sign Up
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.buttonContainer}
-                    onPress={() => {this.props.navigation.navigate('Login')}}
-                >
-                    <Text style={styles.button}> 
-                        Already a user? Log In
-                    </Text>
-                </TouchableOpacity>
-                {/* Idhar ek login ka button bhi add karna hai */}
+                <View style={styles.Button}>
+                    <Button primary raised text="Sign Up" onPress={this.signUp} />
+                </View>
+                <View style={styles.Button}>
+                    <Button primary raised text="Already a user? Log In" onPress={() => { this.props.navigation.navigate('Login') }} />
+                </View>
             </View>
         );
     }
@@ -123,28 +112,11 @@ class SignUp extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        height: '100%',
         flex: 1,
-        backgroundColor: 'rgb(99, 110, 114)',
-        padding: 20
+        padding: 40
     },
-    buttonContainer: {
-        backgroundColor: 'rgb(45, 52, 54)',
-        height: 40,
-        marginTop: 10,
-        paddingTop: 10
-    },
-    button: {
-        textAlign: 'center',
-        color: 'white',
-        
-    },
-    input: {
-        backgroundColor: 'rgba(255,255,255,0.2)',
-        height: 40,
-        color: 'white',
-        paddingHorizontal: 10,
-        marginBottom: 10
+    Button: {
+        marginTop: 20,
     }
 });
 
