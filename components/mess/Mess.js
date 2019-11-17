@@ -9,6 +9,7 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
+// import console = require('console');
 
 
 export default class Mess extends Component {
@@ -31,6 +32,7 @@ export default class Mess extends Component {
 
   render() {
     const state = this.state;
+    const token = (this.props.navigation.getParam('token', 'token'))
     return (
       <View style={styles.container}>
         {/* <Table borderStyle={{borderWidth: 1}}>
@@ -41,31 +43,66 @@ export default class Mess extends Component {
           </TableWrapper>
         </Table> */}
         <View style={styles.buttonContainer}>
-          <Button onPress={() => this.props.navigation.navigate('Menu')} title="Monday" style={styles.button}>
+          <Button onPress={() => this.props.navigation.navigate('Menu',
+              {
+                'token': token,
+                'day': 'Monday'
+              }
+          )} title="Monday" style={styles.button}>
           </Button>
         </View>
         <View style={styles.buttonContainer}>
-          <Button onPress={() => this.props.navigation.navigate('Menu')} title="Tuesday" style={styles.button}>
+          <Button onPress={() => this.props.navigation.navigate('Menu',
+                {
+                  'token': token,
+                  'day': 'tuesday'
+                }
+          )} title="Tuesday" style={styles.button}>
           </Button>
         </View>
         <View style={styles.buttonContainer}>
-          <Button onPress={() => this.props.navigation.navigate('Menu')} title="Wednesday" style={styles.button}>
+          <Button onPress={() => this.props.navigation.navigate('Menu',
+                {
+                  'token': token,
+                  'day': 'wednesday'
+                }
+          )} title="Wednesday" style={styles.button}>
           </Button>
         </View>
         <View style={styles.buttonContainer}>
-          <Button onPress={() => this.props.navigation.navigate('Menu')} title="Thursday" style={styles.button}>
+          <Button onPress={() => this.props.navigation.navigate('Menu',
+              {
+                'token': token,
+                'day': 'thursday'
+              }
+          )} title="Thursday" style={styles.button}>
           </Button>
         </View>
         <View style={styles.buttonContainer}>
-          <Button onPress={() => this.props.navigation.navigate('Menu')} title="Friday" style={styles.button}>
+          <Button onPress={() => this.props.navigation.navigate('Menu',
+            {
+              'token': token,
+              'day': 'friday'
+            }
+          )} title="Friday" style={styles.button}>
           </Button>
         </View>
         <View style={styles.buttonContainer}>
-          <Button onPress={() => this.props.navigation.navigate('Menu')} title="Saturday" style={styles.button}>
+          <Button onPress={() => this.props.navigation.navigate('Menu',
+              {
+                'token': token,
+                'day': 'saturday'
+              }
+          )} title="Saturday" style={styles.button}>
           </Button>
         </View>
         <View style={styles.buttonContainer}>
-          <Button onPress={() => this.props.navigation.navigate('Menu')} title="Sunday" style={styles.button}>
+          <Button onPress={() => this.props.navigation.navigate('Menu',
+            {
+              'token': token,
+              'day': 'sunday'
+            }
+          )} title="Sunday" style={styles.button}>
           </Button>
         </View>
       </View>
