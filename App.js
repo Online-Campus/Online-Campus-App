@@ -27,6 +27,7 @@ import Mess from './components/mess/Mess'
 import Menu from './components/mess/Menu'
 import Leave from './components/Leave/Leave'
 import Calender from './components/Calender/Calender'
+import Verify from './components/Verify/Verify'
 import LeaveDisplay from './components/Leave/LeaveDisplay'
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -88,6 +89,11 @@ const MainNavigator = createStackNavigator({
   Calender: {
     screen: Calender, navigationOptions: {
       title: 'Calender',
+    }
+  },
+  Verify: {
+    screen: Verify, navigationOptions: {
+      title: 'Verification',
     }
   },
 });
