@@ -40,7 +40,7 @@ class Complaint extends React.Component {
                     </Button>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <Button onPress={() => this.props.navigation.navigate('Leave')} title="Leave" style={styles.button}>
+                    <Button onPress={() => this.props.navigation.navigate('LeaveDisplay')} title="Leave Application" style={styles.button}>
                     </Button>
                 </View>
                 <View style={styles.out}>
