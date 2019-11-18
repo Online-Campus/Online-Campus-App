@@ -26,6 +26,7 @@ import Create_complaint from './components/complaint/Create_complaint'
 import Mess from './components/mess/Mess'
 import Menu from './components/mess/Menu'
 import Leave from './components/Leave/Leave'
+import Calender from './components/Calender/Calender'
 import LeaveDisplay from './components/Leave/LeaveDisplay'
 import leaveView from './components/Leave/leaveView'
 import { createAppContainer } from 'react-navigation';
@@ -85,9 +86,15 @@ const MainNavigator = createStackNavigator({
       title: 'Menu',
     }
   },
+
   leaveView: {
     screen: leaveView, navigationOptions: {
       title: 'leaveView',
+
+  Calender: {
+    screen: Calender, navigationOptions: {
+      title: 'Calender',
+
     }
   },
 });

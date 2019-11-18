@@ -49,6 +49,13 @@ class Complaint extends React.Component {
                     )} title="Leave Application" style={styles.button}>
                     </Button>
                 </View>
+                <View style={styles.buttonContainer}>
+                    <Button onPress={() => this.props.navigation.navigate('Calender',                             {
+                                'token': this.props.navigation.getParam('token', 'token'),
+                                'role': this.props.navigation.getParam('role', 'role')
+                            })} title="Calender" style={styles.button}>
+                    </Button>
+                </View>
                 <View style={styles.out}>
                     <Button onPress={() => this.props.navigation.navigate('Login')} title="Sign Out" style={styles.outButton}>
                     </Button>

@@ -25,7 +25,7 @@ class SignUp extends React.Component {
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
       }
-    signUp = () => {
+    signUp = async () => {
         console.log('clicked')
         const { email, first_name, last_name, password, re_password } = this.state
 
@@ -38,6 +38,10 @@ class SignUp extends React.Component {
         }
 
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        this.setState({
+            error: ''
+        })
 
         if(!re.test(email)){
             this.setState({
@@ -54,18 +58,32 @@ class SignUp extends React.Component {
         }
 
         try {
-            axios({
+            await axios({
                 method: 'POST',
                 url: 'https://201751025.pythonanywhere.com/auth/register',
                 data: postData
             }).then((response) => {
                 console.log('resp', response.data)
 
-            }).catch((error) => {
-                console.log('error')
+            }).catch((err) => {
+                this.setState({
+                    error: 'Signup Failed'
+                })
+                console.log('error');
+                // this.rre = true;
             });
         } catch (err) {
-            console.log(err)
+            console.log(err);
+            // rre = true;
+            this.setState({
+                error: 'Signup Failed'
+            })
+        }
+        console.log('Checked 21t8');
+        console.log(this.state.error);
+        if(this.state.error === 'Signup Failed'){
+            console.log('Checked');
+            return;
         }
         this.props.navigation.navigate('Login')
     }
