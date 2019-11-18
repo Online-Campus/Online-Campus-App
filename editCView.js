@@ -11,7 +11,7 @@ import {
 
 import axios from 'axios'
 
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 // import console = require('console');
 
 var radio_props = [
@@ -30,10 +30,10 @@ class editCView extends React.Component {
             value: null
         }
     }
-    
+
     setStatus = () => {
         this.setState(
-            {value:  this.props.navigation.getParam('status', 'status')}
+            { value: this.props.navigation.getParam('status', 'status') }
         )
     }
 
@@ -41,9 +41,9 @@ class editCView extends React.Component {
         console.log('changestatus', this.state.value)
         const idx = this.props.navigation.getParam('id', 'id')
         let label = 'submitted'
-        if(this.state.value == 1){
+        if (this.state.value == 1) {
             label = 'processing'
-        } else if(this.state.value == 2){
+        } else if (this.state.value == 2) {
             label = 'closed'
         }
         const patchData = {
@@ -54,7 +54,7 @@ class editCView extends React.Component {
         }
         axios({
             method: 'PATCH',
-            url: 'https://201751025.pythonanywhere.com/complaint/update/'+idx,
+            url: 'https://201751025.pythonanywhere.com/complaint/update/' + idx,
             headers: headers,
             data: patchData
         }).then((response) => {
@@ -73,30 +73,30 @@ class editCView extends React.Component {
         const role = this.props.navigation.getParam('role', 'role')
         const status = this.props.navigation.getParam('status', 'status')
         const token = this.props.navigation.getParam('token', 'token')
-        
+
         let val = 0;
-        if(status == 'processing') val=1
-        if(status == 'closed') val=2
+        if (status == 'processing') val = 1
+        if (status == 'closed') val = 2
         // 201752007@iiitvadodara.ac.in
         return (
             <View style={styles.container}>
                 <Text style={styles.title}>{this.props.navigation.getParam('title', 'title')}</Text>
-                <Text>{this.props.navigation.getParam('content', 'content')}</Text>
+                <Text style={styles.description}>{this.props.navigation.getParam('content', 'content')}</Text>
                 <Text style={styles.statusDescription}>Status:</Text>
-                {   status == "faculty" && 
-                    <View>
-                      <RadioForm
-                        radio_props={radio_props}
-                        initial={val}
-                        onPress={(value) => { this.setState({ value: value }) }}
+                {status == "faculty" &&
+                    <View style={styles.status}>
+                        <RadioForm
+                            radio_props={radio_props}
+                            initial={val}
+                            onPress={(value) => { this.setState({ value: value }) }}
                         />
 
-                  <Button title = 'Update Status' onPress = {this.changeStatus}> </Button>
-                  </View>
+                        <Button title='Update Status' onPress={this.changeStatus}> </Button>
+                    </View>
                 }
                 {
                     status != "faculty" &&
-                    <Text>{status}</Text>
+                    <Text style={styles.status}>{status}</Text>
                 }
                 {/* <RadioButton style={styles.radio} label="Pubished" checked value="Value" />
                 <RadioButton label="Processing" value="Value" />
