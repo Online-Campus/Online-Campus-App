@@ -17,8 +17,18 @@ export default class Mess extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            menu: {}
+            menu: {},
+            breakfast: '',
+            lunch: '',
+            snacks: '',
+            dinner: ''
         }
+    }
+
+    onChangeText = (key, val) => {
+        this.setState({ [key]: val })
+        console.log('ok' );
+        console.log(this.state.breakfast, this.state.lunch, this.state.snacks , this.state.dinner);
     }
 
     getMenu() {
@@ -114,7 +124,7 @@ export default class Mess extends Component {
                         }
                     </Text>
                     <View style={styles.update}>
-                        <TextField label="Update Breakfast"></TextField>
+                        <TextField label="Update Breakfast"  onChangeText={val => this.onChangeText('breakfast', val)}></TextField>
                         <Button primary raised text="Update Breakfast" onPress={() => { this.props.navigation.navigate('SignUp') }} />
                     </View>
                     <Text style={styles.head}>
@@ -135,7 +145,7 @@ export default class Mess extends Component {
                         }
                     </Text>
                     <View style={styles.update}>
-                        <TextField label="Update Lunch"></TextField>
+                        <TextField label="Update Lunch" onChangeText={val => this.onChangeText('lunch', val)}></TextField>
                         <Button primary raised text="Update Lunch" onPress={() => { this.props.navigation.navigate('SignUp') }} />
                     </View>
                     <Text style={styles.head}>
@@ -156,7 +166,7 @@ export default class Mess extends Component {
                         }
                     </Text>
                     <View style={styles.update}>
-                        <TextField label="Update Snacks"></TextField>
+                        <TextField label="Update Snacks" onChangeText={val => this.onChangeText('snacks', val)}></TextField>
                         <Button primary raised text="Update Snacks" onPress={() => { this.props.navigation.navigate('SignUp') }} />
                     </View>
                     <Text style={styles.head}>
@@ -177,7 +187,7 @@ export default class Mess extends Component {
                         }
                     </Text>
                     <View style={styles.update}>
-                        <TextField label="Update Dinner"></TextField>
+                        <TextField label="Update Dinner" onChangeText={val => this.onChangeText('dinner', val)}></TextField>
                         <Button primary raised text="Update Dinner" onPress={() => { this.props.navigation.navigate('SignUp') }} />
                     </View>
                 </ScrollView>
