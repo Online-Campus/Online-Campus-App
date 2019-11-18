@@ -83,7 +83,7 @@ class editCView extends React.Component {
                 <Text style={styles.title}>{this.props.navigation.getParam('title', 'title')}</Text>
                 <Text style={styles.description}>{this.props.navigation.getParam('content', 'content')}</Text>
                 <Text style={styles.statusDescription}>Status:</Text>
-                {status == "faculty" &&
+                {role == "faculty" &&
                     <View style={styles.status}>
                         <RadioForm
                             radio_props={radio_props}
