@@ -17,7 +17,7 @@ class Complaint extends React.Component {
 
     render() {
         // console.log('complaints', this.state.complaints)
-        console.log('entered', this.props.navigation.getParam('token', 'token'), this.props.navigation.getParam('role', 'role'))
+        console.log('main_role', this.props.navigation.getParam('role', 'role'))
         return (
             <View style={styles.container}>
                 <View style={styles.buttonContainer}>
@@ -34,7 +34,8 @@ class Complaint extends React.Component {
                     <Button 
                         onPress={() => this.props.navigation.navigate('Mess',
                             {
-                                'token': this.props.navigation.getParam('token', 'token')
+                                'token': this.props.navigation.getParam('token', 'token'),
+                                'role': this.props.navigation.getParam('role', 'role')
                             }
                         )} title="Mess" style={styles.button}>
                     </Button>
@@ -63,9 +64,6 @@ const styles = StyleSheet.create({
         marginTop: 150,
         marginLeft: 100,
     },
-    outButton: {
-        backgroundColor: 'red',
-    },
     buttonContainer: {
         marginTop: 30,
     },
@@ -78,7 +76,10 @@ const styles = StyleSheet.create({
         marginLeft: 'auto',
         marginRight: 'auto',
         backgroundColor: 'red',
-    }
+    },
+    outButton: {
+        backgroundColor: 'red',
+    },
 });
 
 export default (Complaint);
