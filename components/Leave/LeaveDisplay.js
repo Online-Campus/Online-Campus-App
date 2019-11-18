@@ -7,6 +7,7 @@ import {
     Text,
     StatusBar,
 } from 'react-native';
+import leaveView from './leaveView'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Button } from 'react-native-material-ui';
 import axios from 'axios';
@@ -27,17 +28,18 @@ class LeaveDisplay extends React.Component {
         }
     }
 
-    fetchComplaints() {
-        // console.log('token', this.props.navigation.getParam('token', 'token'))
+    fetchLeaves =()=> {
+        console.log('token', this.props.navigation.getParam('token', 'token'))
+        const token = this.props.navigation.getParam('token', 'token').access
         const headers = {
-            'Authorization': 'Bearer ' + this.props.navigation.getParam('token', 'token').access
+            'Authorization': 'Bearer ' + token
         }
         axios({
             method: 'GET',
             url: 'https://201751025.pythonanywhere.com/leave/',
             headers: headers,
         }).then((response) => {
-            console.log('resp', response.data)
+            console.log('respo', response.data)
             this.setState({
                 leave: response.data
             })
@@ -49,70 +51,49 @@ class LeaveDisplay extends React.Component {
     }
 
     componentDidMount() {
-        // this.fetchComplaints()
+        this.fetchLeaves()
 
-    }
-
-    componentDidUpdate() {
-        // this.fetchComplaints()
-    }
-
-    addComplaint() {
-        console.log(this.state)
-        // let newComplaints = this.state.complaints
-        // const newComplaint = {
-        //     'id': newComplaints.length + 1,
-        //     'title': 'New Complaint',
-        //     'author': '',
-        //     'content': ''
-        // }
-        // newComplaints = [
-        //     ...newComplaints,
-        //     newComplaint
-        // ]
-        // this.setState({
-        //     complaints: newComplaints
-        // })
-
-        this.props.navigation.navigate('Leave', Leave)
     }
 
     render() {
         // console.log('cpl', this.state.complaints)
         // console.log(this.state)
         // console.log('entered', this.props.navigation.getParam('token', 'token'), this.props.navigation.getParam('role', 'role'))
-        // complaints = this.state.complaints.map(
-        //     c => (
-        //         <View style={styles.list} key={c.id}>
-        //             <Button
-        //                 onPress={() => this.props.navigation.navigate('editCView',
-        //                     {
-        //                         'id': c.id,
-        //                         'title': c.title,
-        //                         'content': c.description,
-        //                         'role': this.props.navigation.getParam('role', 'role'),
-        //                         'status': c.status,
-        //                         'token': this.props.navigation.getParam('token', 'token').access
-        //                     }
-        //                 )}
-        //                 text={c.title}
-        //                 key={c.id}
-        //                 raised
-        //                 primary
-        //             />
-        //             <Divider />
-        //         </View>
-        //     )
-        // )
+        leaves = this.state.leave.map(
+            c => (
+                <View style={styles.list} key={c.id}>
+                    <Button
+                        onPress={() => this.props.navigation.navigate('leaveView',
+                            {
+                                'id': c.id,
+                                'reason': c.reason,
+                                'location': c.location,
+                                 'sdate': c.start_date,
+                                  'edate': c.end_date,
+                                'role': this.props.navigation.getParam('role', 'role'),
+                                'status': c.status,
+                                'token': this.props.navigation.getParam('token', 'token').access
+                            }
+                        )}
+                        text={c.reason}
+                        key={c.id}
+                        raised
+                        primary
+                    />
+                    <Divider />
+                </View>
+            )
+        )
         // console.log('token', this.props.navigation.getParam('token', 'token'))
-        // const token = this.props.navigation.getParam('token', 'token')
         const token = this.props.navigation.getParam('token', 'token')
+        const role = this.props.navigation.getParam('role', 'role')
+        console.log(role)
         return (
-
             <View style={styles.container}>
+
                 <View>
                     <ScrollView style={styles.scroll}>
-                        {/* {complaints} */}
+                        {leaves}
                     </ScrollView>
                 </View>
                 <View
