@@ -16,13 +16,13 @@ import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'reac
 
 var radio_props = [
     { label: 'submitted', value: 0 },
-    { label: 'Processing', value: 1 },
-    { label: 'closed', value: 2 }
+    { label: 'accepted', value: 1 },
+    { label: 'rejected', value: 2 }
 ];
 
 // submitted, processing, closed
 
-class editCView extends React.Component {
+class leaveView extends React.Component {
     // const {navigate} = this.props.navigation;
     constructor() {
         super()
@@ -42,9 +42,9 @@ class editCView extends React.Component {
         const idx = this.props.navigation.getParam('id', 'id')
         let label = 'submitted'
         if (this.state.value == 1) {
-            label = 'processing'
+            label = 'accepted'
         } else if (this.state.value == 2) {
-            label = 'closed'
+            label = 'rejected'
         }
         const patchData = {
             'status': label
@@ -54,7 +54,7 @@ class editCView extends React.Component {
         }
         axios({
             method: 'PATCH',
-            url: 'https://201751025.pythonanywhere.com/complaint/update/' + idx,
+            url: 'https://201751025.pythonanywhere.com/leave/update/' + idx,
             headers: headers,
             data: patchData
         }).then((response) => {
@@ -75,13 +75,18 @@ class editCView extends React.Component {
         const token = this.props.navigation.getParam('token', 'token')
 
         let val = 0;
-        if (status == 'processing') val = 1
-        if (status == 'closed') val = 2
-        // 201752007@iiitvadodara.ac.in
+        if (status == 'accepted') val = 1
+        if (status == 'rejected') val = 2
+
         return (
             <View style={styles.container}>
-                <Text style={styles.title}>{this.props.navigation.getParam('title', 'title')}</Text>
-                <Text style={styles.description}>{this.props.navigation.getParam('content', 'content')}</Text>
+                <Text style={styles.title}>{this.props.navigation.getParam('reason', 'reason')}</Text>
+                <Text style={styles.description}>
+                    {this.props.navigation.getParam('sdate', 'sdate')}
+                </Text>
+                <Text style={styles.description}>
+                    {this.props.navigation.getParam('edate', 'edate')}
+                </Text>
                 <Text style={styles.statusDescription}>Status:</Text>
                 {role == "faculty" &&
                     <View style={styles.status}>
@@ -98,9 +103,6 @@ class editCView extends React.Component {
                     role != "faculty" &&
                     <Text style={styles.status}>{status}</Text>
                 }
-                {/* <RadioButton style={styles.radio} label="Pubished" checked value="Value" />
-                <RadioButton label="Processing" value="Value" />
-                <RadioButton label="Done" value="Value" /> */}
             </View>
         );
     }
@@ -150,5 +152,5 @@ const styles = StyleSheet.create({
     }
 });
 
-export default (editCView);
+export default (leaveView);
 
