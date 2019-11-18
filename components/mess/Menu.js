@@ -8,7 +8,7 @@ import {
     Text,
     StatusBar,
 } from 'react-native';
-// import console = require('console');
+
 import axios from 'axios';
 import { Button } from 'react-native-material-ui';
 import { TextField } from 'react-native-materialui-textfield';
@@ -27,8 +27,6 @@ export default class Mess extends Component {
 
     onChangeText = (key, val) => {
         this.setState({ [key]: val })
-        // console.log('ok' );
-        // console.log(this.state.breakfast, this.state.lunch, this.state.snacks , this.state.dinner);
     }
 
     postMenu = (course) => {
@@ -73,7 +71,7 @@ export default class Mess extends Component {
 
 
 
-        console.log('\n\n\n\n\n\n\n', menu)
+        // console.log('\n\n\n\n\n\n\n', menu)
         const data = menu
 
         const token = this.props.navigation.getParam('token', 'token').access
@@ -98,6 +96,7 @@ export default class Mess extends Component {
 
     getMenu() {
        //  console.log('clickeddd')
+        console.log('role', this.props.navigation.getParam('role', 'role'))
         const token = this.props.navigation.getParam('token', 'token').access
         const headers = {
             'Authorization': 'Bearer ' + token
@@ -124,6 +123,7 @@ export default class Mess extends Component {
     render() {
         const menu = this.state.menu
         const day = (this.props.navigation.getParam('day', 'day'))
+        const role = (this.props.navigation.getParam('role', 'role'))
         let breakfast = []; let lunch = []; let dinner = []; let snacks = [];
 
         if (menu.monday_breakfast) {
@@ -188,10 +188,12 @@ export default class Mess extends Component {
                             )
                         }
                     </Text>
+                    {role === "mess_manager"  &&
                     <View style={styles.update}>
                         <TextField label="Update Breakfast"  onChangeText={val => this.onChangeText('breakfast', val)}></TextField>
                         <Button primary raised text="Update Breakfast" onPress={() => {this.postMenu('b')} } />
                     </View>
+                    }
                     <Text style={styles.head}>
                         Lunch
                 </Text>
@@ -209,10 +211,12 @@ export default class Mess extends Component {
                             )
                         }
                     </Text>
-                    <View style={styles.update}>
-                        <TextField label="Update Lunch" onChangeText={val => this.onChangeText('lunch', val)}></TextField>
-                        <Button primary raised text="Update Lunch" onPress={() => {this.postMenu('l')}}/>
-                    </View>
+                    {role === "mess_manager"  &&
+                        <View style={styles.update}>
+                            <TextField label="Update Lunch" onChangeText={val => this.onChangeText('lunch', val)}></TextField>
+                            <Button primary raised text="Update Lunch" onPress={() => {this.postMenu('l')}}/>
+                        </View>
+                    }
                     <Text style={styles.head}>
                         Snacks
                 </Text>
@@ -230,10 +234,15 @@ export default class Mess extends Component {
                             )
                         }
                     </Text>
-                    <View style={styles.update}>
-                        <TextField label="Update Snacks" onChangeText={val => this.onChangeText('snacks', val)}></TextField>
-                        <Button primary raised text="Update Snacks" onPress={() => {this.postMenu('s')} }/>
-                    </View>
+
+                    {role === "mess_manager"  &&
+                        <View style={styles.update}>
+                            <TextField label="Update Snacks" onChangeText={val => this.onChangeText('snacks', val)}></TextField>
+                            <Button primary raised text="Update Snacks" onPress={() => {this.postMenu('s')} }/>
+                        </View>
+                    }
+
+
                     <Text style={styles.head}>
                         Dinner
                 </Text>
@@ -251,10 +260,12 @@ export default class Mess extends Component {
                             )
                         }
                     </Text>
-                    <View style={styles.update}>
-                        <TextField label="Update Dinner" onChangeText={val => this.onChangeText('dinner', val)}></TextField>
-                        <Button primary raised text="Update Dinner" onPress={() => {this.postMenu('d')}}/>
-                    </View>
+                    {role === "mess_manager"  &&
+                        <View style={styles.update}>
+                            <TextField label="Update Dinner" onChangeText={val => this.onChangeText('dinner', val)}></TextField>
+                            <Button primary raised text="Update Dinner" onPress={() => {this.postMenu('d')}}/>
+                        </View>
+                    }
                 </ScrollView>
             </View>
         )
