@@ -37,13 +37,6 @@ export default class Mess extends Component {
     console.log('mess role', this.props.navigation.getParam('role', 'role'))
     return (
       <View style={styles.container}>
-        {/* <Table borderStyle={{borderWidth: 1}}>
-          <Row data={state.tableHead} flexArr={[1]} style={styles.head} textStyle={styles.text}/>
-          <TableWrapper style={styles.wrapper}>
-            <Col data={state.tableTitle} style={styles.title} textStyle={styles.text}/>
-            <Rows data={state.tableData} flexArr={[1]} style={styles.row} textStyle={styles.text}/>
-          </TableWrapper>
-        </Table> */}
         <View style={styles.buttonContainer}>
           <Button onPress={() => this.props.navigation.navigate('Menu',
               {

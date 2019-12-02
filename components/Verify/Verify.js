@@ -13,6 +13,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Button } from 'react-native-material-ui';
 import { TextField } from 'react-native-materialui-textfield';
 
+
+// This page asks user to verify email for account activation
 class Verify extends React.Component {
 
     render() {
