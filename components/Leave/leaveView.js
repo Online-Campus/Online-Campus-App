@@ -24,6 +24,7 @@ var radio_props = [
 
 class leaveView extends React.Component {
     // const {navigate} = this.props.navigation;
+    // This constructor function initialises the state's application status
     constructor() {
         super()
         state = {
@@ -31,12 +32,14 @@ class leaveView extends React.Component {
         }
     }
 
+        // This function will give the initial leave application status to the state
     setStatus = () => {
         this.setState(
             { value: this.props.navigation.getParam('status', 'status') }
         )
     }
 
+    // This function will change the application status as provided by the faculty
     changeStatus = () => {
         console.log('changestatus', this.state.value)
         const idx = this.props.navigation.getParam('id', 'id')
@@ -66,9 +69,12 @@ class leaveView extends React.Component {
         this.props.navigation.navigate('Complaint')
     }
 
-    componentDidMount = () => {
+     // This function will call the application status once the component mounts
+    componentDidMount () {
         this.setStatus()
     }
+
+
     render() {
         const role = this.props.navigation.getParam('role', 'role')
         const status = this.props.navigation.getParam('status', 'status')
@@ -88,6 +94,7 @@ class leaveView extends React.Component {
                     {this.props.navigation.getParam('edate', 'edate')}
                 </Text>
                 <Text style={styles.statusDescription}>Status:</Text>
+                {/* Radio form will be displayed only when user is a faculty */}
                 {role == "faculty" &&
                     <View style={styles.status}>
                         <RadioForm
@@ -99,6 +106,7 @@ class leaveView extends React.Component {
                         <Button title='Update Status' onPress={this.changeStatus}> </Button>
                     </View>
                 }
+                 {/* Application status will be visible to the students */}
                 {
                     role != "faculty" &&
                     <Text style={styles.status}>{status}</Text>

@@ -91,6 +91,8 @@ const MainNavigator = createStackNavigator({
   leaveView: {
     screen: leaveView, navigationOptions: {
       title: 'leaveView',
+    }
+  },
 
   Calender: {
     screen: Calender, navigationOptions: {
@@ -102,12 +104,9 @@ const MainNavigator = createStackNavigator({
     screen: Verify, navigationOptions: {
       title: 'Verification',
     }
-  },
-  Verify: {
-    screen: Verify, navigationOptions: {
-      title: 'Verification',
-    }
-  },
+
+  }
+
 });
 
 const App = createAppContainer(MainNavigator);

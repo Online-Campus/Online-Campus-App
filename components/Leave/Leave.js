@@ -37,10 +37,7 @@ class Leave extends React.Component {
             "location": "Vadodara",
             "start_date": this.state.from,
             "end_date": this.state.to,
-            "created_at": "2019-11-18T06:12:48.314279Z",
-            "last_modified": "2019-11-18T06:12:48.314319Z",
-            "status": "submitted",
-            "owner": 2
+            "status": "submitted"
         }
         console.log('here')
         // console.log(this.state.token, this.state.title, this.state.description)
@@ -78,11 +75,11 @@ class Leave extends React.Component {
                     onChangeText={val => this.onChangeText('reason', val)}
                 />
                 <TextField 
-                    label='From'
+                    label='From (Date in UTC)'
                     onChangeText={val => this.onChangeText('from', val)}
                 />
                 <TextField 
-                    label='To'
+                    label='To (Date in UTC)'
                     onChangeText={val => this.onChangeText('to', val)}
                 />
                 <Button primary raised text="Send" onPress={this.createLeave}/>
