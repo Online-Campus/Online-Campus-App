@@ -16,6 +16,7 @@ import {
 export default class Mess extends Component {
   constructor(props) {
     super(props);
+    //Creating states
     this.state = {
       tableHead: ['', 'Breakfast', 'Lunch', 'Snacks', 'Dinner'],
       tableTitle: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
@@ -36,15 +37,11 @@ export default class Mess extends Component {
     const token = (this.props.navigation.getParam('token', 'token'))
     console.log('mess role', this.props.navigation.getParam('role', 'role'))
     return (
+      //Main View class
       <View style={styles.container}>
-        {/* <Table borderStyle={{borderWidth: 1}}>
-          <Row data={state.tableHead} flexArr={[1]} style={styles.head} textStyle={styles.text}/>
-          <TableWrapper style={styles.wrapper}>
-            <Col data={state.tableTitle} style={styles.title} textStyle={styles.text}/>
-            <Rows data={state.tableData} flexArr={[1]} style={styles.row} textStyle={styles.text}/>
-          </TableWrapper>
-        </Table> */}
+        {/*View class for each button*/}
         <View style={styles.buttonContainer}>
+          {/*Creating button with text Monday and onPress passing the token, role and day detail to Menu page */}
           <Button onPress={() => this.props.navigation.navigate('Menu',
               {
                 'token': token,
@@ -55,6 +52,7 @@ export default class Mess extends Component {
           </Button>
         </View>
         <View style={styles.buttonContainer}>
+          {/*Creating button with text Tuesday and onPress passing the token, role and day detail to Menu page */}
           <Button onPress={() => this.props.navigation.navigate('Menu',
                 {
                   'token': token,
@@ -65,6 +63,7 @@ export default class Mess extends Component {
           </Button>
         </View>
         <View style={styles.buttonContainer}>
+          {/*Creating button with text Wednesday and onPress passing the token, role and day detail to Menu page */}
           <Button onPress={() => this.props.navigation.navigate('Menu',
                 {
                   'token': token,
@@ -75,6 +74,7 @@ export default class Mess extends Component {
           </Button>
         </View>
         <View style={styles.buttonContainer}>
+          {/*Creating button with text Thursday and onPress passing the token, role and day detail to Menu page */}
           <Button onPress={() => this.props.navigation.navigate('Menu',
               {
                 'token': token,
@@ -85,6 +85,7 @@ export default class Mess extends Component {
           </Button>
         </View>
         <View style={styles.buttonContainer}>
+          {/*Creating button with text Friday and onPress passing the token, role and day detail to Menu page */}
           <Button onPress={() => this.props.navigation.navigate('Menu',
             {
               'token': token,
@@ -95,6 +96,7 @@ export default class Mess extends Component {
           </Button>
         </View>
         <View style={styles.buttonContainer}>
+          {/*Creating button with text Saturday and onPress passing the token, role and day detail to Menu page */}
           <Button onPress={() => this.props.navigation.navigate('Menu',
               {
                 'token': token,
@@ -105,6 +107,7 @@ export default class Mess extends Component {
           </Button>
         </View>
         <View style={styles.buttonContainer}>
+          {/*Creating button with text Sunday and onPress passing the token, role and day detail to Menu page */}
           <Button onPress={() => this.props.navigation.navigate('Menu',
             {
               'token': token,
@@ -119,6 +122,8 @@ export default class Mess extends Component {
   }
 }
 
+
+//Styles
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
   button: {

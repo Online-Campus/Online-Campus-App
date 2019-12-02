@@ -17,6 +17,7 @@ class Verify extends React.Component {
 
     render() {
         return (
+            //Main View container
             <View KeyboardAvoidingView behaviour="padding" style={styles.container}>
                 <Text style={styles.textVerify}>Please verify your account</Text>
             </View>
