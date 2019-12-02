@@ -104,9 +104,7 @@ const MainNavigator = createStackNavigator({
     screen: Verify, navigationOptions: {
       title: 'Verification',
     }
-
   }
-
 });
 
 const App = createAppContainer(MainNavigator);
