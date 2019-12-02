@@ -1,3 +1,6 @@
+// Component name: HomeScreen
+// This component will list all the complaints lodged by the user
+
 import React from 'react';
 import {
     SafeAreaView,
@@ -11,13 +14,9 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Button } from 'react-native-material-ui';
 import axios from 'axios';
 import { Divider } from 'react-native-material-ui';
-// import console = require('console');
-// import console = require('console');
-
-
 
 class HomeScreen extends React.Component {
-    // const {navigate} = this.props.navigation;
+    // This constructor function initialises the state's complaint list
     constructor() {
         super();
         this.state = {
@@ -27,8 +26,8 @@ class HomeScreen extends React.Component {
         }
     }
 
+    // This function fetches complaints by the logged in user from the server
     fetchComplaints() {
-        // console.log('token', this.props.navigation.getParam('token', 'token'))
         const headers = {
             'Authorization': 'Bearer ' + this.props.navigation.getParam('token', 'token').access
         }
@@ -37,7 +36,6 @@ class HomeScreen extends React.Component {
             url: 'https://201751025.pythonanywhere.com/complaint/',
             headers: headers,
         }).then((response) => {
-            // console.log('resp', response.data)
             this.setState({
                 complaints: response.data
             })
@@ -48,39 +46,18 @@ class HomeScreen extends React.Component {
 
     }
 
+    // This hook calls the function to fetch the complaints when Complaint component is mounted
     componentDidMount() {
         this.fetchComplaints()
-
     }
 
+    // This hook calls the function to fetch the complaints when Complaint component is updated
     componentDidUpdate() {
         this.fetchComplaints()
     }
 
-    addComplaint() {
-        console.log(this.state)
-        let newComplaints = this.state.complaints
-        const newComplaint = {
-            'id': newComplaints.length + 1,
-            'title': 'New Complaint',
-            'author': '',
-            'content': ''
-        }
-        newComplaints = [
-            ...newComplaints,
-            newComplaint
-        ]
-        this.setState({
-            complaints: newComplaints
-        })
-
-        this.props.navigation.navigate('editCView', newComplaint)
-    }
-
     render() {
-        // console.log('cpl', this.state.complaints)
-        // console.log(this.state)
-        // console.log('entered', this.props.navigation.getParam('token', 'token'), this.props.navigation.getParam('role', 'role'))
+        //complaints is the list of Buttons leading to detail view of all the fetched complaints
         complaints = this.state.complaints.map(
             c => (
                 <View style={styles.list} key={c.id}>
@@ -104,11 +81,9 @@ class HomeScreen extends React.Component {
                 </View>
             )
         )
-        // console.log('token', this.props.navigation.getParam('token', 'token'))
-        // const token = this.props.navigation.getParam('token', 'token')
+        
         const token = this.props.navigation.getParam('token', 'token')
         return (
-
             <View style={styles.container}>
                 <View>
                     <ScrollView style={styles.scroll}>
@@ -118,17 +93,22 @@ class HomeScreen extends React.Component {
                 <View
                     style={styles.circleButton}
                 >
-                    <Button
-                        style={styles.createButton} raised primary text="+"
-                        onPress={() => this.props.navigation.navigate('Create_complaint', { 'token': token.access })}
-                        title="Create_complaint"
-                    />
+                    {/* Radio button access to change the status of complaint */}
+                    {  this.props.navigation.getParam('role', 'role') == "student" &&
+                        (<Button
+                            style={styles.createButton} raised primary text="+"
+                            onPress={() => this.props.navigation.navigate('Create_complaint', { 'token': token.access })}
+                            title="Create_complaint"
+                        />)
+                    }
                 </View>
             </View>
         );
     }
 };
 
+
+// Styles of all the elements used in this component
 const styles = StyleSheet.create({
     container: {
         flex: 1
@@ -153,12 +133,9 @@ const styles = StyleSheet.create({
         padding: 5,
         height: 50,
         width: 50,
-        // borderRadius: 400,
         right: 60,
         bottom: 40,
         position: "absolute",
-        // borderWidth: 3,
-        // borderColor: 'blue',
     },
     createButton: {
         borderRadius: 1000,

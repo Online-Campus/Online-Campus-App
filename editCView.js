@@ -1,3 +1,6 @@
+// Component name: editCView
+// This component will display the complaint details and edit access to Faculty
+
 import React from 'react';
 import {
     SafeAreaView,
@@ -12,7 +15,7 @@ import {
 import axios from 'axios'
 
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
-// import console = require('console');
+
 
 var radio_props = [
     { label: 'submitted', value: 0 },
@@ -23,7 +26,7 @@ var radio_props = [
 // submitted, processing, closed
 
 class editCView extends React.Component {
-    // const {navigate} = this.props.navigation;
+    // This constructor function initialises the state's application status
     constructor() {
         super()
         state = {
@@ -31,12 +34,14 @@ class editCView extends React.Component {
         }
     }
 
+    // This function will give the initial application status to the state
     setStatus = () => {
         this.setState(
             { value: this.props.navigation.getParam('status', 'status') }
         )
     }
 
+    // This function will change the application status as provided by the faculty
     changeStatus = () => {
         console.log('changestatus', this.state.value)
         const idx = this.props.navigation.getParam('id', 'id')
@@ -66,9 +71,12 @@ class editCView extends React.Component {
         this.props.navigation.navigate('Complaint')
     }
 
-    componentDidMount = () => {
+
+    // This function will call the application status once the component mounts
+    componentDidMount() {
         this.setStatus()
     }
+
     render() {
         const role = this.props.navigation.getParam('role', 'role')
         const status = this.props.navigation.getParam('status', 'status')
@@ -77,12 +85,13 @@ class editCView extends React.Component {
         let val = 0;
         if (status == 'processing') val = 1
         if (status == 'closed') val = 2
-        // 201752007@iiitvadodara.ac.in
+        
         return (
             <View style={styles.container}>
                 <Text style={styles.title}>{this.props.navigation.getParam('title', 'title')}</Text>
                 <Text style={styles.description}>{this.props.navigation.getParam('content', 'content')}</Text>
                 <Text style={styles.statusDescription}>Status:</Text>
+                {/* Radio form will be displayed only when user is a faculty */}
                 {role == "faculty" &&
                     <View style={styles.status}>
                         <RadioForm
@@ -94,13 +103,12 @@ class editCView extends React.Component {
                         <Button title='Update Status' onPress={this.changeStatus}> </Button>
                     </View>
                 }
+                {/* Application status will be visible to the students */}
                 {
                     role != "faculty" &&
                     <Text style={styles.status}>{status}</Text>
                 }
-                {/* <RadioButton style={styles.radio} label="Pubished" checked value="Value" />
-                <RadioButton label="Processing" value="Value" />
-                <RadioButton label="Done" value="Value" /> */}
+
             </View>
         );
     }
