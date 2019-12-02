@@ -49,7 +49,6 @@ class Login extends React.Component {
                     role: response.data.current_user.account_type
                 })
                 console.log('final', this.state.token, response.data.current_user.is_verified)
-<<<<<<< HEAD
                 // if(response.data.current_user.is_verified  == false){
                 //     this.props.navigation.navigate('Verify')
                 //     // console.log()
@@ -57,8 +56,6 @@ class Login extends React.Component {
                 // else {
                 //     this.props.navigation.navigate('Complaint', { 'token': this.state.token, 'role': response.data.current_user.account_type })
                 // }
-=======
->>>>>>> d7dbd2b16b338a756d92a49492c7005581f513c2
                 this.props.navigation.navigate('Complaint', { 'token': this.state.token, 'role': response.data.current_user.account_type })
             }).catch((error) => {
                 console.log(error)

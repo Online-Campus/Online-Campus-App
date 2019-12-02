@@ -39,10 +39,6 @@ export default class Mess extends Component {
     return (
       //Main View class
       <View style={styles.container}>
-<<<<<<< HEAD
-=======
-        {/*View class for each button*/}
->>>>>>> d7dbd2b16b338a756d92a49492c7005581f513c2
         <View style={styles.buttonContainer}>
           {/*Creating button with text Monday and onPress passing the token, role and day detail to Menu page */}
           <Button onPress={() => this.props.navigation.navigate('Menu',
