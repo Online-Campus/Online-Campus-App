@@ -108,7 +108,7 @@ class SignUp extends React.Component {
         return (
             <View KeyboardAvoidingView behaviour="padding" style={styles.container}>
                 <StatusBar backgroundColor="blue" barStyle="light-content" />
-                {/* Textfiled to store email entered by the user */}
+                {/* Textfield to store email entered by the user */}
                 <TextField
                     label="Email"
                     returnKeyType="next"
@@ -118,7 +118,7 @@ class SignUp extends React.Component {
                     placeholderTextColor='rgba(255,255,255,0.7)'
                     onChangeText={val => this.onChangeText('email', val)}
                 />
-                {/* Textfiled to store First Name entered by the user */}
+                {/* Textfield to store First Name entered by the user */}
                 <TextField
                     style={styles.input}
                     label="First Name"
@@ -127,7 +127,7 @@ class SignUp extends React.Component {
                     placeholderTextColor='rgba(255,255,255,0.7)'
                     onChangeText={val => this.onChangeText('first_name', val)}
                 />
-                {/* Textfiled to store Last Name entered by the user */}
+                {/* Textfield to store Last Name entered by the user */}
                 <TextField
                     style={styles.input}
                     label="Last Name"
@@ -136,7 +136,7 @@ class SignUp extends React.Component {
                     placeholderTextColor='rgba(255,255,255,0.7)'
                     onChangeText={val => this.onChangeText('last_name', val)}
                 />
-                {/* Textfiled to store Password entered by the user */}
+                {/* Textfield to store Password entered by the user */}
                 <TextField
                     style={styles.input}
                     label="Password"
@@ -146,7 +146,7 @@ class SignUp extends React.Component {
                     onChangeText={val => this.onChangeText('password', val)}
                     ref={(input) => this.passwordInput = input}
                 />
-                {/* Textfiled to store re-password entered by the user */}
+                {/* Textfield to store re-password entered by the user */}
                 <TextField
                     style={styles.input}
                     label="Re-enter Password"
