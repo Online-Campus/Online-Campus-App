@@ -18,6 +18,7 @@ import { TextField } from 'react-native-materialui-textfield';
 class Calender extends React.Component {
     constructor(props) {
         super(props);
+        //State for each calender link
         this.state = {
             academic: '',
             holiday: '',
@@ -30,11 +31,13 @@ class Calender extends React.Component {
         const headers = {
             'Authorization': 'Bearer ' + this.props.navigation.getParam('token', 'token').access
         }
+        //Using axios GET method and passing the header
         axios({
             method: 'GET',
             url: 'https://201751025.pythonanywhere.com/dates/1',
             headers: headers,
         }).then((response) => {
+            //Response is stored in the states.
             console.log('resp', response.data)
             this.setState({
                 academic: response.data.academic_link,
@@ -49,24 +52,31 @@ class Calender extends React.Component {
     }
 
     componentDidMount() {
+        //Calling fetchDates() function
         this.fetchDates()
 
     }
 
     componentDidUpdate() {
+        //Calling fetchDates() function
         this.fetchDates()
     }
 
     render() {
         return (
+            //Main View class
             <View KeyboardAvoidingView behaviour="padding" style={styles.container}>
+                {/* View class for each button  */}
                 <View style={styles.button}>
+                    {/* Button for academic calender and getting link from states */}
                     <Button style={styles.button} onPress={() => Linking.openURL(this.state.academic)} primary raised text="Academic Calender" />
                 </View>
                 <View style={styles.button}>
+                    {/* Button for holiday calender and getting link from states */}
                     <Button style={styles.button} onPress={() => Linking.openURL(this.state.holiday)} primary raised text="Holiday Dates" />
                 </View>
                 <View style={styles.button}>
+                    {/* Button for Exam calender and getting link from states */}
                     <Button style={styles.button} onPress={() => Linking.openURL(this.state.exam)} primary raised text="Exam Dates" />
                 </View>
             </View>
@@ -74,6 +84,7 @@ class Calender extends React.Component {
     }
 };
 
+{/* Styles */}
 const styles = StyleSheet.create({
     container: {
         flex: 1,
