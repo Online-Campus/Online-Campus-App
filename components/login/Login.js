@@ -32,14 +32,13 @@ class Login extends React.Component {
         console.log('ok', this.state.username, this.state.password)
     }
 
-    // 201752006@iiitvadodara.ac.in
     fetchDetails = () => {
-       //  console.log('clicked_token', this.state.token)
         if(this.state.token){
             const postData = {'username': 'neeraj4', 'password': 'p'}
             const headers = {
                 'Authorization': 'Bearer ' + this.state.token.access
             }
+            //Using axios for GET method and storing role of user in the state
             axios({
                 method: 'GET',
                 url: 'https://201751025.pythonanywhere.com/auth/current_user',
@@ -50,23 +49,16 @@ class Login extends React.Component {
                     role: response.data.current_user.account_type
                 })
                 console.log('final', this.state.token, response.data.current_user.is_verified)
-                // if(response.data.current_user.is_verified  == false){
-                //     this.props.navigation.navigate('Verify')
-                //     // console.log()
-                // }
-                // else {
-                //     this.props.navigation.navigate('Complaint', { 'token': this.state.token, 'role': response.data.current_user.account_type })
-                // }
                 this.props.navigation.navigate('Complaint', { 'token': this.state.token, 'role': response.data.current_user.account_type })
             }).catch((error) => {
                 console.log(error)
             });
-            // this.setState({
-            //     verify: response.data.current_user.is_verified
-            // })
         }
     }
 
+
+    //When username and password is entered.
+    //Token is recieved if both fields are correct
     handleLogin = () => {
         console.log('clicked')
         const postData = {
@@ -104,6 +96,7 @@ class Login extends React.Component {
                 <StatusBar
                     barStyle="light-content"
                 />
+                {/*Field for Username and email */}
                 <TextField
                     style={styles.input}
                     label="Email or Username"
@@ -114,6 +107,7 @@ class Login extends React.Component {
                     autoCorrect={false}
                     onChangeText={val => this.onChangeText('username', val)}
                 />
+                {/*Field for password */}
                 <TextField
                     style={styles.input}
                     label="Password"
@@ -122,12 +116,14 @@ class Login extends React.Component {
                     ref={(input) => this.passwordInput = input}
                     onChangeText={val => this.onChangeText('password', val)}
                 />
+                {/* Button for login which calls handlelogin function */}
                 <View style={styles.Button}>
                     <Button primary raised text="Login" onPress={this.handleLogin} />
                 </View>
                 <Text style={styles.error}>
                     {this.state.error}
                 </Text>
+                {/* Signup button for new user */}
                 <View style={styles.Button}>
                     <Button primary raised text="New User! Create New Account" onPress={() => { this.props.navigation.navigate('SignUp') }} />
                 </View>
@@ -136,6 +132,8 @@ class Login extends React.Component {
     }
 };
 
+
+//Styles
 const styles = StyleSheet.create({
     container: {
         flex: 1,

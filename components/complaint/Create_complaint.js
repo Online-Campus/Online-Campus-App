@@ -24,10 +24,12 @@ class Create_complaint extends React.Component {
         token: null
     }
 
+    //Text value is stored in state
     onChangeText = (key, val) => {
         this.setState({ [key]: val })
     }
 
+    //Posting complaint on the database
     createComplaint = () => {
         const headers = {
             'Authorization': 'Bearer ' + this.state.token
@@ -37,6 +39,7 @@ class Create_complaint extends React.Component {
             'description': this.state.description
         }
 
+        //Using axios for POST method and storing in complaint state
         axios({
             method: 'POST',
             url: 'https://201751025.pythonanywhere.com/complaint/',
@@ -51,10 +54,10 @@ class Create_complaint extends React.Component {
                 console.log('error')
             });        
             this.props.navigation.navigate('Complaint')
-            // this.props.navigation.dispatch(NavigationActions.back())
 
     }
 
+    //Storing the token in state when component mount
     componentDidMount(){
         this.setState({
             token: this.props.navigation.getParam('token', 'token')
@@ -67,21 +70,26 @@ class Create_complaint extends React.Component {
 
     render() {
         return (
+            //View class
             <View KeyboardAvoidingView behaviour="padding" style={styles.container}>
+                {/* Text filed for title*/}
                 <TextField 
                     label='Title'
                     onChangeText={val => this.onChangeText('title', val)}
                 />
+                {/* Text filed for description*/}
                 <TextField 
                     label='Description'
                     onChangeText={val => this.onChangeText('description', val)}
                 />
+                {/* Button for creating*/}
                 <Button primary raised text="Create" onPress={this.createComplaint}/>
             </View>
         );
     }
 };
 
+//Style
 const styles = StyleSheet.create({
     container: {
         flex: 1,
