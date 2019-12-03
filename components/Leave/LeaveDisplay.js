@@ -12,13 +12,10 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Button } from 'react-native-material-ui';
 import axios from 'axios';
 import { Divider } from 'react-native-material-ui';
-// import console = require('console');
-// import console = require('console');
 
 
 
 class LeaveDisplay extends React.Component {
-    // const {navigate} = this.props.navigation;
     constructor() {
         super();
         this.state = {
@@ -28,12 +25,14 @@ class LeaveDisplay extends React.Component {
         }
     }
 
-    fetchLeaves =()=> {
+    //Fetching leave details
+    fetchLeaves = () => {
         console.log('token', this.props.navigation.getParam('token', 'token'))
         const token = this.props.navigation.getParam('token', 'token').access
         const headers = {
             'Authorization': 'Bearer ' + token
         }
+        //Using axios GET method and storing data in the state
         axios({
             method: 'GET',
             url: 'https://201751025.pythonanywhere.com/leave/',
@@ -50,15 +49,14 @@ class LeaveDisplay extends React.Component {
 
     }
 
+    //fetchLeaves function is called when component mount
     componentDidMount() {
         this.fetchLeaves()
 
     }
 
     render() {
-        // console.log('cpl', this.state.complaints)
-        // console.log(this.state)
-        // console.log('entered', this.props.navigation.getParam('token', 'token'), this.props.navigation.getParam('role', 'role'))
+        //All leave application are stored in leaves variable
         leaves = this.state.leave.map(
             c => (
                 <View style={styles.list} key={c.id}>
@@ -68,8 +66,8 @@ class LeaveDisplay extends React.Component {
                                 'id': c.id,
                                 'reason': c.reason,
                                 'location': c.location,
-                                 'sdate': c.start_date,
-                                  'edate': c.end_date,
+                                'sdate': c.start_date,
+                                'edate': c.end_date,
                                 'role': this.props.navigation.getParam('role', 'role'),
                                 'status': c.status,
                                 'token': this.props.navigation.getParam('token', 'token').access
@@ -84,18 +82,21 @@ class LeaveDisplay extends React.Component {
                 </View>
             )
         )
-        // console.log('token', this.props.navigation.getParam('token', 'token'))
+
+        //Getting token and role of the user
         const token = this.props.navigation.getParam('token', 'token')
         const role = this.props.navigation.getParam('role', 'role')
         console.log(role)
         return (
+            //Main View class
             <View style={styles.container}>
-
+                {/* All leave application are displayed */}
                 <View>
                     <ScrollView style={styles.scroll}>
                         {leaves}
                     </ScrollView>
                 </View>
+                {/* Button for creating leave application */}
                 <View
                     style={styles.circleButton}
                 >
@@ -110,6 +111,7 @@ class LeaveDisplay extends React.Component {
     }
 };
 
+//Styles
 const styles = StyleSheet.create({
     container: {
         flex: 1

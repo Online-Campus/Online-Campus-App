@@ -16,6 +16,7 @@ import axios from 'axios'
 
 class Leave extends React.Component {
 
+    //State for detail of leave
     state = {
         reason: '',
         description: '',
@@ -24,10 +25,12 @@ class Leave extends React.Component {
         to: ''
     }
 
+    //Storing details in the state
     onChangeText = (key, val) => {
         this.setState({ [key]: val })
     }
 
+    //posting data in the database
     createLeave = () => {
         const headers = {
             'Authorization': 'Bearer ' + this.state.token
@@ -40,8 +43,8 @@ class Leave extends React.Component {
             "status": "submitted"
         }
         console.log('here')
-        // console.log(this.state.token, this.state.title, this.state.description)
 
+        //Using axios for POST method
         axios({
             method: 'POST',
             url: 'https://201751025.pythonanywhere.com/leave/',
@@ -57,6 +60,7 @@ class Leave extends React.Component {
 
     }
 
+    //token is stored in the state when component mount
     componentDidMount(){
         this.setState({
             token: this.props.navigation.getParam('token', 'token')
@@ -69,15 +73,19 @@ class Leave extends React.Component {
 
     render() {
         return (
+            //Main View class
             <View KeyboardAvoidingView behaviour="padding" style={styles.container}>
+                {/* Textfiled for leave reason */}
                 <TextField 
                     label='Leave Reason'
                     onChangeText={val => this.onChangeText('reason', val)}
                 />
+                {/* Textfiled for date */}
                 <TextField 
                     label='From (Date in UTC)'
                     onChangeText={val => this.onChangeText('from', val)}
                 />
+                {/* Textfiled for date */}
                 <TextField 
                     label='To (Date in UTC)'
                     onChangeText={val => this.onChangeText('to', val)}
@@ -88,6 +96,7 @@ class Leave extends React.Component {
     }
 };
 
+//Styles
 const styles = StyleSheet.create({
     container: {
         flex: 1,

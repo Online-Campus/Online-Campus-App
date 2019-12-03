@@ -15,12 +15,15 @@ import { Button } from 'react-native-material-ui';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class SignUp extends React.Component {
+    //State for user details
     state = {
         email: '', password: '', re_password: '', first_name: '', last_name: '', error: ''
     }
+    //set State  for the details
     onChangeText = (key, val) => {
         this.setState({ [key]: val })
     }
+    //Checking email validation
     validateEmail = (email) => {
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
@@ -43,6 +46,7 @@ class SignUp extends React.Component {
             error: ''
         })
 
+        //Email check
         if(!re.test(email)){
             this.setState({
                 error: 'Email is incorrect.'
@@ -50,6 +54,7 @@ class SignUp extends React.Component {
             return;
         }
 
+        //Password should match
         if(password != re_password){
             this.setState({
                 error: 'Password does not match'
@@ -57,6 +62,7 @@ class SignUp extends React.Component {
             return;
         }
 
+        //axios using POST to store the user data
         try {
             await axios({
                 method: 'POST',
@@ -91,9 +97,11 @@ class SignUp extends React.Component {
 
     render() {
         return (
+            //Main View class
             <View KeyboardAvoidingView behaviour="padding" style={styles.container}>
                 <StatusBar backgroundColor="blue" barStyle="light-content" />
 
+                {/* Textfield for email-address*/}
                 <TextField
                     label="Email"
                     returnKeyType="next"
@@ -103,6 +111,7 @@ class SignUp extends React.Component {
                     placeholderTextColor='rgba(255,255,255,0.7)'
                     onChangeText={val => this.onChangeText('email', val)}
                 />
+                {/* Textfield for name*/}
                 <TextField
                     style={styles.input}
                     label="First Name"
@@ -111,6 +120,7 @@ class SignUp extends React.Component {
                     placeholderTextColor='rgba(255,255,255,0.7)'
                     onChangeText={val => this.onChangeText('first_name', val)}
                 />
+                {/* Textfield for last name*/}
                 <TextField
                     style={styles.input}
                     label="Last Name"
@@ -119,6 +129,7 @@ class SignUp extends React.Component {
                     placeholderTextColor='rgba(255,255,255,0.7)'
                     onChangeText={val => this.onChangeText('last_name', val)}
                 />
+                {/* Textfield for password*/}
                 <TextField
                     style={styles.input}
                     label="Password"
@@ -128,6 +139,7 @@ class SignUp extends React.Component {
                     onChangeText={val => this.onChangeText('password', val)}
                     ref={(input) => this.passwordInput = input}
                 />
+                {/* Textfield for comfirm password*/}
                 <TextField
                     style={styles.input}
                     label="Re-enter Password"
@@ -137,12 +149,15 @@ class SignUp extends React.Component {
                     onChangeText={val => this.onChangeText('re_password', val)}
                     ref={(input) => this.passwordInput = input}
                 />
+                {/* Button for siging up*/}
                 <View style={styles.Button}>
                     <Button primary raised text="Sign Up" onPress={this.signUp} />
                 </View>
+                {/* Text for error */}
                 <Text style={styles.error}>
                     {this.state.error}
                 </Text>
+                {/* Button for login */}
                 <View style={styles.Button}>
                     <Button primary raised text="Already a user? Log In" onPress={() => { this.props.navigation.navigate('Login') }} />
                 </View>
@@ -151,6 +166,7 @@ class SignUp extends React.Component {
     }
 };
 
+//Style
 const styles = StyleSheet.create({
     container: {
         flex: 1,
