@@ -1,4 +1,4 @@
 - Clone the repository
 - ```cd Online-Campus-App```
--```yarn install```
+- ```yarn install```
 - ```yarn add react-native-material-ui```
