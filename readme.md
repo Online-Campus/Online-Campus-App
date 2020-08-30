@@ -1,3 +1,4 @@
-npm intsall 
-
-yarn add react-native-material-ui
+- Clone the repository
+- ```cd Online-Campus-App```
+-```yarn install```
+- ```yarn add react-native-material-ui```
