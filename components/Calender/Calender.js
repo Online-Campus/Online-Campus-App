@@ -27,7 +27,6 @@ class Calender extends React.Component {
     }
 
     fetchDates() {
-        // console.log('token', this.props.navigation.getParam('token', 'token'))
         const headers = {
             'Authorization': 'Bearer ' + this.props.navigation.getParam('token', 'token').access
         }
