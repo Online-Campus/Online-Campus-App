@@ -29,7 +29,6 @@ class SignUp extends React.Component {
         return re.test(email);
       }
     signUp = async () => {
-        console.log('clicked')
         const { email, first_name, last_name, password, re_password } = this.state
 
         const postData = {
@@ -85,10 +84,8 @@ class SignUp extends React.Component {
                 error: 'Signup Failed'
             })
         }
-        console.log('Checked 21t8');
         console.log(this.state.error);
         if(this.state.error === 'Signup Failed'){
-            console.log('Checked');
             return;
         }
         this.props.navigation.navigate('Login')

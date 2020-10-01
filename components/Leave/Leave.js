@@ -42,7 +42,6 @@ class Leave extends React.Component {
             "end_date": this.state.to,
             "status": "submitted"
         }
-        console.log('here')
 
         //Using axios for POST method
         axios({

@@ -44,7 +44,6 @@ class Login extends React.Component {
                 url: 'https://201751025.pythonanywhere.com/auth/current_user',
                 headers: headers
             }).then((response) => {
-                // console.log('resp', response.data.current_user.account_type)
                 this.setState({
                     role: response.data.current_user.account_type
                 })
@@ -60,7 +59,6 @@ class Login extends React.Component {
     //When username and password is entered.
     //Token is recieved if both fields are correct
     handleLogin = () => {
-        console.log('clicked')
         const postData = {
             'username': this.state.username,
             'password': this.state.password
