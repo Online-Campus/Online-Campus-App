@@ -85,7 +85,7 @@ class editCView extends React.Component {
         let val = 0;
         if (status == 'processing') val = 1
         if (status == 'closed') val = 2
-        
+
         return (
             <View style={styles.container}>
                 <Text style={styles.title}>{this.props.navigation.getParam('title', 'title')}</Text>

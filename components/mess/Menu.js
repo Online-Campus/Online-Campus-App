@@ -31,47 +31,46 @@ export default class Mess extends Component {
 
     postMenu = (course) => {
         const day = (this.props.navigation.getParam('day', 'day'))
-        let menu  = this.state.menu
+        let menu = this.state.menu
         if (day == 'monday') {
-            if(course == 'b')(menu.monday_breakfast) = this.state.breakfast
-            if(course == 'l')(menu.monday_lunch) = this.state.lunch
-            if(course == 's')(menu.monday_snacks) = this.state.snacks
-            if(course == 'd')(menu.monday_dinner) = this.state.dinner
+            if (course == 'b') (menu.monday_breakfast) = this.state.breakfast
+            if (course == 'l') (menu.monday_lunch) = this.state.lunch
+            if (course == 's') (menu.monday_snacks) = this.state.snacks
+            if (course == 'd') (menu.monday_dinner) = this.state.dinner
         } else if (day == 'tuesday') {
-            if(course == 'b')(menu.tuesday_breakfast) = this.state.breakfast
-            if(course == 'l')(menu.tuesday_lunch) = this.state.lunch
-            if(course == 'd')(menu.tuesday_dinner) = this.state.dinner
-            if(course == 's')(menu.tuesday_snacks) = this.state.snacks
+            if (course == 'b') (menu.tuesday_breakfast) = this.state.breakfast
+            if (course == 'l') (menu.tuesday_lunch) = this.state.lunch
+            if (course == 'd') (menu.tuesday_dinner) = this.state.dinner
+            if (course == 's') (menu.tuesday_snacks) = this.state.snacks
         } else if (day == 'wednesday') {
-            if(course == 'b')(menu.wednesday_breakfast) = this.state.breakfast
-            if(course == 'l')(menu.wednesday_lunch) = this.state.lunch
-            if(course == 'd') (menu.wednesday_dinner) = this.state.dinner
-            if(course == 's')(menu.wednesday_snacks) = this.state.snacks
+            if (course == 'b') (menu.wednesday_breakfast) = this.state.breakfast
+            if (course == 'l') (menu.wednesday_lunch) = this.state.lunch
+            if (course == 'd') (menu.wednesday_dinner) = this.state.dinner
+            if (course == 's') (menu.wednesday_snacks) = this.state.snacks
         } else if (day == 'thursday') {
-            if(course == 'b')(menu.thursday_breakfast) = this.state.breakfast
-            if(course == 'l')(menu.thursday_lunch) = this.state.lunch
-            if(course == 'd')(menu.thursday_dinner) = this.state.dinner
-            if(course == 's')(menu.thursday_snacks) = this.state.snacks
+            if (course == 'b') (menu.thursday_breakfast) = this.state.breakfast
+            if (course == 'l') (menu.thursday_lunch) = this.state.lunch
+            if (course == 'd') (menu.thursday_dinner) = this.state.dinner
+            if (course == 's') (menu.thursday_snacks) = this.state.snacks
         } else if (day == 'friday') {
-            if(course == 'b')(menu.friday_breakfast) = this.state.breakfast
-            if(course == 'l')(menu.friday_lunch) = this.state.lunch
-            if(course == 'd') (menu.friday_dinner) = this.state.dinner
-            if(course == 's') (menu.friday_snacks) = this.state.snacks
+            if (course == 'b') (menu.friday_breakfast) = this.state.breakfast
+            if (course == 'l') (menu.friday_lunch) = this.state.lunch
+            if (course == 'd') (menu.friday_dinner) = this.state.dinner
+            if (course == 's') (menu.friday_snacks) = this.state.snacks
         } else if (day == 'saturday') {
-            if(course == 'b')(menu.saturday_breakfast) = this.state.breakfast
-            if(course == 'l') (menu.saturday_lunch) = this.state.lunch
-            if(course == 'd')(menu.saturday_dinner) = this.state.dinner
-            if(course == 's')(menu.saturday_snacks) = this.state.snacks
+            if (course == 'b') (menu.saturday_breakfast) = this.state.breakfast
+            if (course == 'l') (menu.saturday_lunch) = this.state.lunch
+            if (course == 'd') (menu.saturday_dinner) = this.state.dinner
+            if (course == 's') (menu.saturday_snacks) = this.state.snacks
         } else {
-            if(course == 'b')(menu.sunday_breakfast) = this.state.breakfast
-            if(course == 'l') (menu.sunday_lunch) = this.state.lunch
-            if(course == 'd') (menu.sunday_dinner) = this.state.dinner
-            if(course == 's') (menu.sunday_snacks) = this.state.snacks
+            if (course == 'b') (menu.sunday_breakfast) = this.state.breakfast
+            if (course == 'l') (menu.sunday_lunch) = this.state.lunch
+            if (course == 'd') (menu.sunday_dinner) = this.state.dinner
+            if (course == 's') (menu.sunday_snacks) = this.state.snacks
         }
 
 
 
-        // console.log('\n\n\n\n\n\n\n', menu)
         const data = menu
 
         const token = this.props.navigation.getParam('token', 'token').access
@@ -95,7 +94,6 @@ export default class Mess extends Component {
     }
 
     getMenu() {
-       //  console.log('clickeddd')
         console.log('role', this.props.navigation.getParam('role', 'role'))
         const token = this.props.navigation.getParam('token', 'token').access
         const headers = {
@@ -109,7 +107,6 @@ export default class Mess extends Component {
             this.setState({
                 menu: response.data
             })
-            // console.log('d', response.data[0])
         }).catch((error) => {
             console.log(error)
         });
@@ -127,9 +124,6 @@ export default class Mess extends Component {
         let breakfast = []; let lunch = []; let dinner = []; let snacks = [];
 
         if (menu.monday_breakfast) {
-            // console.log(
-            //     (menu.monday_breakfast).split(',')
-            // )
             if (day == 'monday') {
                 breakfast = (menu.monday_breakfast).split(',')
                 lunch = (menu.monday_lunch).split(',')
@@ -188,11 +182,11 @@ export default class Mess extends Component {
                             )
                         }
                     </Text>
-                    {role === "mess_manager"  &&
-                    <View style={styles.update}>
-                        <TextField label="Update Breakfast"  onChangeText={val => this.onChangeText('breakfast', val)}></TextField>
-                        <Button primary raised text="Update Breakfast" onPress={() => {this.postMenu('b')} } />
-                    </View>
+                    {role === "mess_manager" &&
+                        <View style={styles.update}>
+                            <TextField label="Update Breakfast" onChangeText={val => this.onChangeText('breakfast', val)}></TextField>
+                            <Button primary raised text="Update Breakfast" onPress={() => { this.postMenu('b') }} />
+                        </View>
                     }
                     <Text style={styles.head}>
                         Lunch
@@ -211,10 +205,10 @@ export default class Mess extends Component {
                             )
                         }
                     </Text>
-                    {role === "mess_manager"  &&
+                    {role === "mess_manager" &&
                         <View style={styles.update}>
                             <TextField label="Update Lunch" onChangeText={val => this.onChangeText('lunch', val)}></TextField>
-                            <Button primary raised text="Update Lunch" onPress={() => {this.postMenu('l')}}/>
+                            <Button primary raised text="Update Lunch" onPress={() => { this.postMenu('l') }} />
                         </View>
                     }
                     <Text style={styles.head}>
@@ -235,10 +229,10 @@ export default class Mess extends Component {
                         }
                     </Text>
 
-                    {role === "mess_manager"  &&
+                    {role === "mess_manager" &&
                         <View style={styles.update}>
                             <TextField label="Update Snacks" onChangeText={val => this.onChangeText('snacks', val)}></TextField>
-                            <Button primary raised text="Update Snacks" onPress={() => {this.postMenu('s')} }/>
+                            <Button primary raised text="Update Snacks" onPress={() => { this.postMenu('s') }} />
                         </View>
                     }
 
@@ -260,10 +254,10 @@ export default class Mess extends Component {
                             )
                         }
                     </Text>
-                    {role === "mess_manager"  &&
+                    {role === "mess_manager" &&
                         <View style={styles.update}>
                             <TextField label="Update Dinner" onChangeText={val => this.onChangeText('dinner', val)}></TextField>
-                            <Button primary raised text="Update Dinner" onPress={() => {this.postMenu('d')}}/>
+                            <Button primary raised text="Update Dinner" onPress={() => { this.postMenu('d') }} />
                         </View>
                     }
                 </ScrollView>

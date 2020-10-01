@@ -45,20 +45,19 @@ class Create_complaint extends React.Component {
             url: 'https://201751025.pythonanywhere.com/complaint/',
             data: postData,
             headers: headers,
-            }).then((response) => {
-            // console.log('', response.data)
+        }).then((response) => {
             this.setState({
                 complaints: response.data
             })
-            }).catch((error) => {
-                console.log('error')
-            });        
-            this.props.navigation.navigate('Complaint')
+        }).catch((error) => {
+            console.log('error')
+        });
+        this.props.navigation.navigate('Complaint')
 
     }
 
     //Storing the token in state when component mount
-    componentDidMount(){
+    componentDidMount() {
         this.setState({
             token: this.props.navigation.getParam('token', 'token')
         })
@@ -73,17 +72,17 @@ class Create_complaint extends React.Component {
             //View class
             <View KeyboardAvoidingView behaviour="padding" style={styles.container}>
                 {/* Text filed for title*/}
-                <TextField 
+                <TextField
                     label='Title'
                     onChangeText={val => this.onChangeText('title', val)}
                 />
                 {/* Text filed for description*/}
-                <TextField 
+                <TextField
                     label='Description'
                     onChangeText={val => this.onChangeText('description', val)}
                 />
                 {/* Button for creating*/}
-                <Button primary raised text="Create" onPress={this.createComplaint}/>
+                <Button primary raised text="Create" onPress={this.createComplaint} />
             </View>
         );
     }
