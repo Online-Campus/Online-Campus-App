@@ -33,8 +33,8 @@ class Login extends React.Component {
     }
 
     fetchDetails = () => {
-        if(this.state.token){
-            const postData = {'username': 'neeraj4', 'password': 'p'}
+        if (this.state.token) {
+            const postData = { 'username': 'neeraj4', 'password': 'p' }
             const headers = {
                 'Authorization': 'Bearer ' + this.state.token.access
             }
@@ -44,7 +44,6 @@ class Login extends React.Component {
                 url: 'https://201751025.pythonanywhere.com/auth/current_user',
                 headers: headers
             }).then((response) => {
-                // console.log('resp', response.data.current_user.account_type)
                 this.setState({
                     role: response.data.current_user.account_type
                 })
@@ -86,7 +85,7 @@ class Login extends React.Component {
         });
 
 
-        
+
     }
 
     render() {
