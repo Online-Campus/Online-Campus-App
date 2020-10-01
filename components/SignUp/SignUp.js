@@ -75,7 +75,7 @@ class SignUp extends React.Component {
                 this.setState({
                     error: 'Signup Failed'
                 })
-                console.log('error');
+                console.log(err);
                 // this.rre = true;
             });
         } catch (err) {

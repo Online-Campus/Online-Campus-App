@@ -53,7 +53,7 @@ class Leave extends React.Component {
             }).then((response) => {
                 console.log('done', response.data)
             }).catch((error) => {
-                console.log('error')
+                console.log(error)
             });        
             this.props.navigation.navigate('Complaint')
             // this.props.navigation.dispatch(NavigationActions.back())

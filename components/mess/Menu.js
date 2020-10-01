@@ -69,9 +69,6 @@ export default class Mess extends Component {
             if(course == 's') (menu.sunday_snacks) = this.state.snacks
         }
 
-
-
-        // console.log('\n\n\n\n\n\n\n', menu)
         const data = menu
 
         const token = this.props.navigation.getParam('token', 'token').access
@@ -95,7 +92,6 @@ export default class Mess extends Component {
     }
 
     getMenu() {
-       //  console.log('clickeddd')
         console.log('role', this.props.navigation.getParam('role', 'role'))
         const token = this.props.navigation.getParam('token', 'token').access
         const headers = {
@@ -109,7 +105,6 @@ export default class Mess extends Component {
             this.setState({
                 menu: response.data
             })
-            // console.log('d', response.data[0])
         }).catch((error) => {
             console.log(error)
         });
@@ -127,9 +122,6 @@ export default class Mess extends Component {
         let breakfast = []; let lunch = []; let dinner = []; let snacks = [];
 
         if (menu.monday_breakfast) {
-            // console.log(
-            //     (menu.monday_breakfast).split(',')
-            // )
             if (day == 'monday') {
                 breakfast = (menu.monday_breakfast).split(',')
                 lunch = (menu.monday_lunch).split(',')
